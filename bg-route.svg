@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 520" fill="none">
+<path d="M150 330 Q385 60 620 150" stroke="#C3A24A" stroke-opacity=".55" stroke-width="1.2" stroke-dasharray="1 8"/>
+<path d="M620 150 Q750 60 880 200" stroke="#C3A24A" stroke-opacity=".55" stroke-width="1.2" stroke-dasharray="1 8"/>
+<path d="M880 200 Q1160 110 1440 300" stroke="#C3A24A" stroke-opacity=".55" stroke-width="1.2" stroke-dasharray="1 8"/>
+<circle cx="150" cy="330" r="26" stroke="#1B2B41" stroke-opacity=".8" stroke-width="1"/>
+<circle cx="150" cy="330" r="26" stroke="#8F7430" stroke-opacity=".5" stroke-width="1" stroke-dasharray="2 8"/>
+<rect x="146" y="326" width="9" height="9" transform="rotate(45 150 330)" fill="#C3A24A" fill-opacity=".85"/>
+<text x="150" y="290" font-family="IBM Plex Mono,monospace" font-size="14" letter-spacing="3" fill="#8F7430" fill-opacity=".9" text-anchor="middle">01</text>
+<text x="150" y="382" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="2" fill="#22354D" fill-opacity=".8" text-anchor="middle">24.45N 54.38E</text>
+<circle cx="620" cy="150" r="26" stroke="#1B2B41" stroke-opacity=".8" stroke-width="1"/>
+<circle cx="620" cy="150" r="26" stroke="#8F7430" stroke-opacity=".5" stroke-width="1" stroke-dasharray="2 8"/>
+<rect x="616" y="146" width="9" height="9" transform="rotate(45 620 150)" fill="#C3A24A" fill-opacity=".85"/>
+<text x="620" y="110" font-family="IBM Plex Mono,monospace" font-size="14" letter-spacing="3" fill="#8F7430" fill-opacity=".9" text-anchor="middle">02</text>
+<text x="620" y="202" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="2" fill="#22354D" fill-opacity=".8" text-anchor="middle">51.51N 0.13W</text>
+<circle cx="880" cy="200" r="26" stroke="#1B2B41" stroke-opacity=".8" stroke-width="1"/>
+<circle cx="880" cy="200" r="26" stroke="#8F7430" stroke-opacity=".5" stroke-width="1" stroke-dasharray="2 8"/>
+<rect x="876" y="196" width="9" height="9" transform="rotate(45 880 200)" fill="#C3A24A" fill-opacity=".85"/>
+<text x="880" y="160" font-family="IBM Plex Mono,monospace" font-size="14" letter-spacing="3" fill="#8F7430" fill-opacity=".9" text-anchor="middle">03</text>
+<text x="880" y="252" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="2" fill="#22354D" fill-opacity=".8" text-anchor="middle">48.86N 2.35E</text>
+<circle cx="1440" cy="300" r="26" stroke="#1B2B41" stroke-opacity=".8" stroke-width="1"/>
+<circle cx="1440" cy="300" r="26" stroke="#8F7430" stroke-opacity=".5" stroke-width="1" stroke-dasharray="2 8"/>
+<rect x="1436" y="296" width="9" height="9" transform="rotate(45 1440 300)" fill="#C3A24A" fill-opacity=".85"/>
+<text x="1440" y="260" font-family="IBM Plex Mono,monospace" font-size="14" letter-spacing="3" fill="#8F7430" fill-opacity=".9" text-anchor="middle">04</text>
+<text x="1440" y="352" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="2" fill="#22354D" fill-opacity=".8" text-anchor="middle">38.90N 77.04W</text>
+</svg>

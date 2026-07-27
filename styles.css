@@ -494,3 +494,17 @@ html.fine-cursor body,html.fine-cursor a,html.fine-cursor button{cursor:none}
 html.cursor-hover .cursor-ring{width:60px;height:60px;border-color:var(--gold);transition:width .3s var(--ease),height .3s var(--ease),border-color .3s}
 .cursor-ring{transition:width .3s var(--ease),height .3s var(--ease),border-color .3s}
 @media (prefers-reduced-motion:reduce){.log-dot::after{animation:none}html.js .kin .w i{transform:none!important}}
+
+
+/* ═══ artwork layer — The Bearing Set ═══ */
+.chapter{position:relative}
+.scroll-cue{z-index:1}
+#hero::after,#journey::after,#stations::after,.admission::after{content:"";position:absolute;inset:0;pointer-events:none;background-repeat:no-repeat;z-index:0}
+#hero::after{background-image:url('bg-chart.svg');background-position:center right;background-size:cover;opacity:.5}
+html[dir="rtl"] #hero::after{background-position:center left}
+#journey::after{background-image:url('bg-contour.svg');background-position:left bottom;background-size:cover;opacity:.42}
+#stations::after{background-image:url('bg-route.svg');background-position:center bottom;background-size:100% auto;opacity:.5}
+.admission::after{background-image:url('bg-seal.svg');background-position:center 42%;background-size:min(640px,82vw) auto;opacity:.5}
+.samt-mark{display:block;width:2.25em;height:auto;margin-inline:auto}
+.big-ar .samt-mark{margin-inline:0}
+@media (max-width:640px){#hero::after{opacity:.32}.admission::after{opacity:.4}}
