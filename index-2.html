@@ -608,11 +608,6 @@ html[lang="ar"] .foot-links a{font-family:var(--font-body);letter-spacing:0;font
   </div>
 </section>
 
-<!-- ══════════ KINETIC STRIP ══════════ -->
-<div class="marquee" aria-hidden="true">
-  <div class="mq-track" id="mqTrack"><span class="mq-seg"><span class="mq-en">From potential to command</span><span class="mq-dot">◆</span><span class="mq-ar">من الإمكانات إلى القيادة</span><span class="mq-dot">◆</span><span class="mq-deg">000° — 360°</span><span class="mq-dot">◆</span></span></div>
-</div>
-
 <!-- ══════════ CH 04 — SELECTION ══════════ -->
 <section class="chapter" id="selection">
   <div class="wrap">
@@ -789,16 +784,6 @@ html[lang="ar"] .foot-links a{font-family:var(--font-body);letter-spacing:0;font
   </div>
 </section>
 
-<!-- ══════════ INTERSTITIAL — DOCTRINE ══════════ -->
-<section class="chapter kin reveal" aria-label="Doctrine">
-  <div class="wrap">
-    <span class="kin-line" data-i18n="kin1">Few</span>
-    <span class="kin-line" data-i18n="kin2">are chosen.</span>
-    <span class="kin-line" data-i18n="kin3">Fewer</span>
-    <span class="kin-line" data-i18n="kin4">hold command.</span>
-  </div>
-</section>
-
 <!-- ══════════ CH 06 — COMPETENCIES ══════════ -->
 <section class="chapter" id="competencies">
   <div class="wrap">
@@ -885,20 +870,6 @@ html[lang="ar"] .foot-links a{font-family:var(--font-body);letter-spacing:0;font
       <div class="imp reveal" data-delay="1"><span class="imp-n"><span class="count" data-count="4">4</span><span class="unit" data-i18n="imp2u">nations</span></span><h3 data-i18n="imp2h">Strategic networks</h3><p data-i18n="imp2p">National and international relationships built with purpose across four hosting environments.</p></div>
       <div class="imp reveal"><span class="imp-n"><span class="count" data-count="3">3</span><span class="unit" data-i18n="imp3u">assignments</span></span><h3 data-i18n="imp3h">Transformation delivery</h3><p data-i18n="imp3p">Priority institutional challenges converted into owned, governed delivery plans.</p></div>
       <div class="imp reveal" data-delay="1"><span class="imp-n"><span class="count" data-count="12">12</span><span class="unit" data-i18n="imp4u">months</span></span><h3 data-i18n="imp4h">Sustained institutional value</h3><p data-i18n="imp4p">Structured follow-up and impact measurement for a full year after the programme ends.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ PROGRAMME LOG ══════════ -->
-<section class="chapter log-sec">
-  <div class="wrap">
-    <div class="chapter-head reveal">
-      <p class="eyebrow" data-i18n="logEyebrow">The programme log</p>
-    </div>
-    <div class="log-list">
-      <div class="log-row reveal"><span class="log-k" data-i18n="log1k">Cohort 01</span><span class="log-v" data-i18n="log1v">Forming — nominations by institutional invitation.</span><span class="log-dot"></span></div>
-      <div class="log-row reveal" data-delay="1"><span class="log-k" data-i18n="log2k">Stations</span><span class="log-v" data-i18n="log2v">Four nations in concept — UAE, United Kingdom, France, United States.</span><span class="log-dot"></span></div>
-      <div class="log-row reveal" data-delay="2"><span class="log-k" data-i18n="log3k">Standard</span><span class="log-v" data-i18n="log3v">One command benchmark — defined and independently assessed.</span><span class="log-dot"></span></div>
     </div>
   </div>
 </section>
@@ -1015,46 +986,6 @@ body.intro-lock{overflow:hidden}
 .intro-skip{position:absolute;bottom:32px;inset-inline-start:50%;translate:-50% 0;font-family:var(--font-mono);font-size:10px;letter-spacing:.3em;color:var(--slate-dim);opacity:0;animation:introFade .7s var(--ease) 1.6s forwards;padding:8px 14px}
 @keyframes introFade{to{opacity:1}}
 @media (prefers-reduced-motion:reduce){.intro{display:none}.hero-needle,.intro-needle{animation:none}html.js .hl-in{transform:none!important}}
-/* ═══ atmosphere: canvas, marquee, kinetic type, log, cursor ═══ */
-.atmo{position:fixed;inset:0;z-index:0;pointer-events:none}
-html.gl .halo{display:none}
-.marquee{overflow:hidden;border-block:1px solid var(--line);padding-block:clamp(18px,3vh,30px);position:relative;z-index:1;background:#050D18B0}
-.mq-track{display:flex;align-items:center;white-space:nowrap;width:max-content;will-change:transform}
-.mq-seg{display:flex;align-items:center;gap:clamp(22px,3vw,46px);padding-inline-end:clamp(22px,3vw,46px)}
-.mq-en{font-family:'Marcellus',serif;font-size:clamp(30px,5.4vw,64px);color:transparent;-webkit-text-stroke:1px #2E4159;letter-spacing:.02em}
-.mq-ar{font-family:'Amiri',serif;font-size:clamp(30px,5.4vw,60px);color:#22354D;direction:rtl;unicode-bidi:isolate}
-.mq-deg{font-family:var(--font-mono);font-size:clamp(13px,1.4vw,17px);letter-spacing:.3em;color:var(--gold-deep);direction:ltr;unicode-bidi:isolate}
-.mq-dot{color:var(--gold-deep);font-size:12px}
-.kin .wrap{display:flex;flex-direction:column}
-.kin{padding-block:clamp(120px,20vh,230px);overflow:hidden}
-.kin-line{font-family:var(--font-display);font-weight:400;font-size:clamp(50px,10.5vw,148px);line-height:1.06;color:var(--bone);display:block;width:max-content;max-width:100%;will-change:transform;text-wrap:balance}
-html[lang="ar"] .kin-line{line-height:1.3}
-.kin-line:nth-child(2){margin-inline-start:10%;color:var(--champagne)}
-.kin-line:nth-child(3){margin-inline-start:3%}
-.kin-line:nth-child(4){margin-inline-start:18%;color:var(--champagne)}
-html.js .kin .w{display:inline-block;overflow:hidden;vertical-align:top}
-html.js .kin .w i{display:inline-block;font-style:normal;transform:translateY(118%);transition:transform .95s var(--ease);transition-delay:calc(var(--i)*90ms)}
-html.js .kin.in .w i{transform:none}
-.log-sec .chapter-head{margin-bottom:26px}
-.log-list{border-top:1px solid var(--line)}
-.log-row{display:grid;grid-template-columns:170px 1fr auto;gap:20px;padding:22px 6px;border-bottom:1px solid var(--line);align-items:center}
-.log-k{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
-html[lang="ar"] .log-k{font-family:var(--font-body);letter-spacing:0;font-size:13px}
-.log-v{color:var(--slate);font-size:15px}
-.log-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);position:relative;justify-self:end}
-.log-dot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1px solid var(--gold);animation:logPulse 2.4s var(--ease) infinite}
-@keyframes logPulse{0%{transform:scale(.35);opacity:.9}100%{transform:scale(1.5);opacity:0}}
-@media (max-width:640px){.log-row{grid-template-columns:1fr auto;row-gap:6px}.log-v{grid-column:1/-1}}
-.intro-deg{position:absolute;bottom:84px;inset-inline-start:50%;translate:-50% 0;font-family:var(--font-mono);font-size:13px;letter-spacing:.24em;color:var(--gold);font-variant-numeric:tabular-nums;opacity:0;animation:introFade .6s var(--ease) .5s forwards}
-.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;z-index:400;pointer-events:none;translate:-50% -50%;will-change:transform;display:none}
-.cursor-dot{width:5px;height:5px;border-radius:50%;background:var(--champagne)}
-.cursor-ring{width:38px;height:38px;border-radius:50%;border:1px solid #C3A24A59}
-.cursor-ring::before{content:"";position:absolute;top:2px;left:50%;translate:-50% 0;width:1px;height:6px;background:var(--gold)}
-html.fine-cursor .cursor-dot,html.fine-cursor .cursor-ring{display:block}
-html.fine-cursor body,html.fine-cursor a,html.fine-cursor button{cursor:none}
-html.cursor-hover .cursor-ring{width:60px;height:60px;border-color:var(--gold);transition:width .3s var(--ease),height .3s var(--ease),border-color .3s}
-.cursor-ring{transition:width .3s var(--ease),height .3s var(--ease),border-color .3s}
-@media (prefers-reduced-motion:reduce){.log-dot::after{animation:none}html.js .kin .w i{transform:none!important}}
 </style>
 
 <script>
@@ -1166,11 +1097,6 @@ en: {
   admLede:'Participation is by institutional nomination and a rigorous selection process. Admission is not open enrolment — the circle closes only for those who complete it.',
   adm1:'Years of practical experience', adm2:'Fellows per cohort', adm3:'Full-time commitment', adm4:'Independent final endorsement',
   admNote:'Nominations open by institutional invitation',
-  kin1:'Few', kin2:'are chosen.', kin3:'Fewer', kin4:'hold command.',
-  logEyebrow:'The programme log',
-  log1k:'Cohort 01', log1v:'Forming — nominations by institutional invitation.',
-  log2k:'Stations', log2v:'Four nations in concept — UAE, United Kingdom, France, United States.',
-  log3k:'Standard', log3v:'One command benchmark — defined and independently assessed.',
   footTag:'From potential to command', footName:'The name', footTop:'Back to true north',
   footCopy:'\u00a9 2026 SAMT. All rights reserved.',
   footLegal:'Concept website. Proposed partners and programme arrangements are subject to formal approval and agreement.'
@@ -1276,11 +1202,6 @@ ar: {
   admLede:'المشاركة بترشيح مؤسسي وعملية اختيار صارمة. الالتحاق ليس تسجيلاً مفتوحاً — والدائرة لا تكتمل إلا لمن أتمها.',
   adm1:'سنوات خبرة عملية', adm2:'زملاء في كل دفعة', adm3:'التزام بدوام كامل', adm4:'تزكية نهائية مستقلة',
   admNote:'الترشيح بدعوة مؤسسية',
-  kin1:'قلة', kin2:'تُختار.', kin3:'وأقل', kin4:'يقودون.',
-  logEyebrow:'سجل البرنامج',
-  log1k:'الدفعة 01', log1v:'قيد التشكيل — الترشيح بدعوة مؤسسية.',
-  log2k:'المحطات', log2v:'أربع دول ضمن التصور — الإمارات والمملكة المتحدة وفرنسا والولايات المتحدة.',
-  log3k:'المعيار', log3v:'معيار قيادي واحد — محدد ويُقيَّم باستقلالية.',
   footTag:'من الإمكانات إلى القيادة', footName:'الاسم', footTop:'العودة إلى الشمال الحقيقي',
   footCopy:'© 2026 سمت. جميع الحقوق محفوظة.',
   footLegal:'موقع تصوري. الشركاء المقترحون وترتيبات البرنامج خاضعون للاعتماد والاتفاق الرسميين.'
@@ -1326,7 +1247,6 @@ function applyLang(next){
   });
   var lb = qs('#langBtnTxt'); if(lb) lb.innerHTML = d._langBtn;
   wrapLines();
-  wrapKin();
   updateFrame();
 }
 var langBtn = qs('#langBtn');
@@ -1409,7 +1329,6 @@ function tick(){
     if(grat) grat.style.backgroundPosition = '0 ' + (-st * 0.06).toFixed(1) + 'px';
   }
   if(instDeg) instDeg.textContent = fmtDeg(curDeg);
-  atmoFrame(st);
   if((frameN++ % 5) === 0) slowRefresh(st, p);
   requestAnimationFrame(tick);
 }
@@ -1514,159 +1433,6 @@ if(menu){
 }
 doc.addEventListener('keydown', function(ev){ if(ev.key === 'Escape') setMenu(false); });
 
-/* ═══════════ atmosphere layer ═══════════ */
-var lastSt = 0, vel = 0;
-var mqTrack = qs('#mqTrack'), mqSegW = 0, mqX = 0;
-if(mqTrack){
-  var mqBase = mqTrack.innerHTML;
-  mqTrack.innerHTML = mqBase + mqBase + mqBase + mqBase;
-}
-function measureMq(){
-  var seg = mqTrack ? qs('.mq-seg', mqTrack) : null;
-  mqSegW = seg ? seg.getBoundingClientRect().width : 0;
-}
-var kinLines = qsa('.kin-line');
-var kinSpeeds = [0.05, 0.11, 0.07, 0.15];
-
-/* WebGL fog + grain (graceful fallback to CSS halo) */
-var glCanvas = null, gl = null, glProg = null, glU = {};
-var glScale = (window.innerWidth < 760 ? 0.5 : 0.66);
-var mouseT = {x:.5, y:.38}, mouseC = {x:.5, y:.38};
-(function initGL(){
-  try{
-    glCanvas = doc.createElement('canvas');
-    glCanvas.className = 'atmo';
-    glCanvas.setAttribute('aria-hidden','true');
-    gl = glCanvas.getContext('webgl', {alpha:false, antialias:false, depth:false, stencil:false});
-    if(!gl){ glCanvas = null; return; }
-    doc.body.insertBefore(glCanvas, doc.body.firstChild);
-    var vsrc = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
-    var fsrc =
-      'precision mediump float;uniform vec2 uR;uniform float uT;uniform float uS;uniform vec2 uM;' +
-      'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}' +
-      'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),f.x),f.y);}' +
-      'float fbm(vec2 p){float v=0.,a=.5;for(int k=0;k<4;k++){v+=a*n(p);p*=2.03;a*=.5;}return v;}' +
-      'void main(){vec2 uv=gl_FragCoord.xy/uR;vec2 q=uv;q.x*=uR.x/uR.y;float t=uT*.018;' +
-      'float f=fbm(q*1.5+vec2(t*.55,-uS*.00035-t*.22));f=fbm(q*1.35+f*1.25+vec2(-t*.3,t*.18));' +
-      'vec3 base=mix(vec3(.006,.024,.048),vec3(.011,.038,.068),uv.y);' +
-      'vec3 gold=vec3(.764,.635,.29);' +
-      'float band=smoothstep(.2,.95,f)*smoothstep(1.08,.3,uv.y);' +
-      'vec3 col=base+gold*band*.14;' +
-      'col+=vec3(.32,.42,.58)*smoothstep(.62,1.,f)*smoothstep(.95,.15,uv.y)*.045;' +
-      'float d=distance(vec2(uv.x*uR.x/uR.y,uv.y),vec2(uM.x*uR.x/uR.y,uM.y));' +
-      'col+=gold*exp(-d*3.8)*.05;' +
-      'float g=h(gl_FragCoord.xy+vec2(mod(uT*43.,97.)))-.5;col+=g*.032;' +
-      'float vg=smoothstep(1.3,.4,length(uv-.5));col*=mix(.82,1.,vg);' +
-      'gl_FragColor=vec4(col,1.);}';
-    function sh(type, s){
-      var o = gl.createShader(type);
-      gl.shaderSource(o, s); gl.compileShader(o);
-      if(!gl.getShaderParameter(o, gl.COMPILE_STATUS)) throw gl.getShaderInfoLog(o);
-      return o;
-    }
-    glProg = gl.createProgram();
-    gl.attachShader(glProg, sh(gl.VERTEX_SHADER, vsrc));
-    gl.attachShader(glProg, sh(gl.FRAGMENT_SHADER, fsrc));
-    gl.linkProgram(glProg);
-    if(!gl.getProgramParameter(glProg, gl.LINK_STATUS)) throw 'link failed';
-    gl.useProgram(glProg);
-    var buf = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
-    var loc = gl.getAttribLocation(glProg, 'p');
-    gl.enableVertexAttribArray(loc);
-    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-    glU.r = gl.getUniformLocation(glProg, 'uR');
-    glU.t = gl.getUniformLocation(glProg, 'uT');
-    glU.s = gl.getUniformLocation(glProg, 'uS');
-    glU.m = gl.getUniformLocation(glProg, 'uM');
-    sizeGL();
-    root.classList.add('gl');
-    if(reduced) drawGL(0);
-  }catch(e){
-    if(glCanvas && glCanvas.parentNode) glCanvas.parentNode.removeChild(glCanvas);
-    glCanvas = null; gl = null;
-  }
-})();
-function sizeGL(){
-  if(!gl) return;
-  glCanvas.width = Math.max(1, Math.round(window.innerWidth * glScale));
-  glCanvas.height = Math.max(1, Math.round(window.innerHeight * glScale));
-  gl.viewport(0, 0, glCanvas.width, glCanvas.height);
-}
-var glT0 = (window.performance && performance.now) ? performance.now() : Date.now();
-function drawGL(st){
-  if(!gl) return;
-  var sec = (((window.performance && performance.now) ? performance.now() : Date.now()) - glT0) / 1000;
-  gl.uniform2f(glU.r, glCanvas.width, glCanvas.height);
-  gl.uniform1f(glU.t, sec);
-  gl.uniform1f(glU.s, st);
-  gl.uniform2f(glU.m, mouseC.x, 1.0 - mouseC.y);
-  gl.drawArrays(gl.TRIANGLES, 0, 3);
-}
-
-/* bearing reticle cursor + magnetic controls (fine pointers only) */
-var fine = window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches;
-var curDot = null, curRing = null;
-var curT = {x: window.innerWidth/2, y: window.innerHeight/2};
-var curR = {x: curT.x, y: curT.y};
-if(fine && !reduced){
-  curDot = doc.createElement('div'); curDot.className = 'cursor-dot';
-  curRing = doc.createElement('div'); curRing.className = 'cursor-ring';
-  doc.body.appendChild(curDot); doc.body.appendChild(curRing);
-  root.classList.add('fine-cursor');
-  doc.addEventListener('mousemove', function(e){
-    curT.x = e.clientX; curT.y = e.clientY;
-    mouseT.x = e.clientX / window.innerWidth;
-    mouseT.y = e.clientY / window.innerHeight;
-  }, {passive:true});
-  doc.addEventListener('mouseover', function(e){
-    if(e.target && e.target.closest && e.target.closest('a,button')) root.classList.add('cursor-hover');
-  });
-  doc.addEventListener('mouseout', function(e){
-    if(e.target && e.target.closest && e.target.closest('a,button')) root.classList.remove('cursor-hover');
-  });
-  qsa('.btn,.lang-btn').forEach(function(el){
-    el.addEventListener('mousemove', function(e){
-      var r = el.getBoundingClientRect();
-      var mx = (e.clientX - r.left - r.width/2) * .22;
-      var my = (e.clientY - r.top - r.height/2) * .3;
-      el.style.transform = 'translate(' + mx.toFixed(1) + 'px,' + my.toFixed(1) + 'px)';
-    });
-    el.addEventListener('mouseleave', function(){ el.style.transform = ''; });
-  });
-}
-
-function atmoFrame(st){
-  vel = vel * 0.88 + (st - lastSt) * 0.12;
-  lastSt = st;
-  if(reduced) return;
-  if(mqTrack && mqSegW > 0){
-    mqX -= 0.55 + Math.min(Math.abs(vel) * 0.05, 2.6);
-    if(mqX <= -mqSegW) mqX += mqSegW;
-    mqTrack.style.transform = 'translateX(' + mqX.toFixed(1) + 'px)';
-  }
-  for(var i = 0; i < kinLines.length; i++){
-    var r = kinLines[i].getBoundingClientRect();
-    var c = r.top + r.height/2 - window.innerHeight/2;
-    if(Math.abs(c) < window.innerHeight * 1.3){
-      kinLines[i].style.transform = 'translateY(' + (-c * kinSpeeds[i % 4]).toFixed(1) + 'px)';
-    }
-  }
-  mouseC.x += (mouseT.x - mouseC.x) * .06;
-  mouseC.y += (mouseT.y - mouseC.y) * .06;
-  if(curDot){
-    curDot.style.transform = 'translate(' + curT.x + 'px,' + curT.y + 'px)';
-    curR.x += (curT.x - curR.x) * .16;
-    curR.y += (curT.y - curR.y) * .16;
-    curRing.style.transform = 'translate(' + curR.x.toFixed(1) + 'px,' + curR.y.toFixed(1) + 'px)';
-  }
-  if(!doc.hidden) drawGL(st);
-}
-measureMq();
-window.setTimeout(measureMq, 1600);
-window.addEventListener('resize', function(){ sizeGL(); measureMq(); }, {passive:true});
-
 /* headline line-masking */
 function wrapLines(){
   qsa('[data-i18n-html]').forEach(function(el){
@@ -1674,14 +1440,6 @@ function wrapLines(){
     el.innerHTML = parts.map(function(pt){
       return '<span class="hl"><span class="hl-in">' + pt + '</span></span>';
     }).join('');
-  });
-}
-function wrapKin(){
-  qsa('.kin-line').forEach(function(el){
-    var ws = (el.textContent || '').trim().split(/\s+/);
-    el.innerHTML = ws.map(function(w, i){
-      return '<span class="w"><i style="--i:' + i + '">' + w + '</i></span>';
-    }).join(' ');
   });
 }
 
@@ -1699,25 +1457,14 @@ if(!reduced){
       '</svg>' +
       '<div class="intro-word"><span class="iw-ar">\u0633\u0645\u062a</span><span class="iw-en">SAMT</span></div>' +
     '</div>' +
-    '<div class="intro-deg" id="introDeg">000.0\u00b0</div>' +
     '<button class="intro-skip">SKIP</button>';
   doc.body.appendChild(intro);
   doc.body.classList.add('intro-lock');
   buildTicks('introTicks', 100, 100, 94, 10, 90, 8, 4, '#22354D', '#8F7430');
-  var introDegEl = doc.getElementById('introDeg');
-  var introStart = (window.performance && performance.now) ? performance.now() : Date.now();
-  (function introCount(){
-    if(introDone) return;
-    var now = (window.performance && performance.now) ? performance.now() : Date.now();
-    var d = Math.min(360, (now - introStart) / 2400 * 360);
-    if(introDegEl) introDegEl.textContent = fmtDeg(d);
-    if(d < 360) requestAnimationFrame(introCount);
-  })();
   var introDone = false;
   var endIntro = function(){
     if(introDone) return;
     introDone = true;
-    if(introDegEl) introDegEl.textContent = fmtDeg(360);
     intro.classList.add('done');
     doc.body.classList.remove('intro-lock');
     qsa('#hero .reveal').forEach(function(el){
@@ -1737,7 +1484,6 @@ if(!reduced){
 
 /* first paint */
 wrapLines();
-wrapKin();
 updateFrame();
 })();
 </script>
