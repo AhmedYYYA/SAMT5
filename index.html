@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAMT — From Potential to Command</title>
+<meta name="description" content="SAMT is a selective leadership programme progressing exceptional potential toward command readiness through disciplined formation, international exposure and evidence-based assessment.">
+<meta name="theme-color" content="#030A12">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="canonical" href="https://ahmedyyya.github.io/SAMT4/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SAMT — From Potential to Command">
+<meta property="og:description" content="Selected for potential. Shaped for command.">
+<meta property="og:url" content="https://ahmedyyya.github.io/SAMT4/">
+<meta property="og:image" content="https://ahmedyyya.github.io/SAMT4/preview/approved-creative-reference.png">
+<meta property="og:image:alt" content="SAMT — From Potential to Command">
+<meta property="og:locale" content="en_AE">
+<meta property="og:locale:alternate" content="ar_AE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SAMT — From Potential to Command">
+<meta name="twitter:description" content="Selected for potential. Shaped for command.">
+<meta name="twitter:image" content="https://ahmedyyya.github.io/SAMT4/preview/approved-creative-reference.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   SAMT — Azimuth Design System
+   One metaphor: the bearing. Everything derives from it.
+   ============================================================ */
+:root{
+  --night:#030A12;
+  --ink:#0A1626;
+  --ink-2:#0E1C30;
+  --line:#1B2B41;
+  --line-soft:#14213363;
+  --bone:#EDE6D6;
+  --bone-dim:#CDC5B4;
+  --slate:#97A6B8;
+  --slate-dim:#6B7B8F;
+  --gold:#C3A24A;
+  --gold-deep:#8F7430;
+  --champagne:#E9D9A6;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --dur:.8s;
+  --font-display:'Marcellus',serif;
+  --font-body:'Archivo',system-ui,-apple-system,sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+  --w-max:1140px;
+  --w-text:64ch;
+  --pad-x:clamp(20px,5vw,56px);
+  --space-chapter:clamp(110px,16vh,190px);
+}
+html[lang="ar"]{
+  --font-display:'Amiri',serif;
+  --font-body:'IBM Plex Sans Arabic',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+body{
+  background:var(--night);
+  color:var(--bone);
+  font-family:var(--font-body);
+  font-size:clamp(15.5px,1.05vw,17px);
+  line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--gold);color:var(--night)}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+
+/* ---------- atmosphere: faint graticule ---------- */
+.graticule{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(var(--line-soft) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+  background-size:96px 96px;
+  mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 0%,transparent 78%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 0%,transparent 78%);
+}
+.halo{
+  position:fixed;z-index:0;pointer-events:none;
+  top:-28vh;inset-inline-start:50%;translate:-50% 0;
+  width:min(1200px,140vw);aspect-ratio:1.6;
+  background:radial-gradient(ellipse at center,#C3A24A14 0%,#C3A24A05 42%,transparent 70%);
+}
+html[dir="rtl"] .halo{translate:50% 0}
+
+/* ---------- typography roles ---------- */
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:14px;
+}
+html[lang="ar"] .eyebrow{letter-spacing:.14em;font-size:12.5px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold-deep);flex:none}
+.bearing-tag{
+  font-family:var(--font-mono);font-size:11.5px;letter-spacing:.18em;
+  color:var(--slate-dim);
+}
+.display{
+  font-family:var(--font-display);font-weight:400;
+  color:var(--bone);text-wrap:balance;
+}
+html[lang="ar"] .display{line-height:1.55}
+.display em{font-style:normal;color:var(--champagne)}
+html[lang="en"] .display em{font-style:italic}
+.h1{font-size:clamp(42px,7.2vw,88px);line-height:1.08;letter-spacing:.005em}
+.h2{font-size:clamp(30px,4.4vw,54px);line-height:1.14}
+.lede{font-size:clamp(17px,1.35vw,20.5px);color:var(--bone-dim);max-width:var(--w-text)}
+.body-dim{color:var(--slate);max-width:var(--w-text)}
+.aphorism{
+  font-family:var(--font-display);
+  font-size:clamp(19px,1.7vw,25px);line-height:1.55;
+  color:var(--champagne);
+  border-inline-start:2px solid var(--gold-deep);
+  padding-inline-start:22px;
+  max-width:56ch;
+}
+
+/* ---------- shell ---------- */
+.wrap{position:relative;z-index:1;width:100%;max-width:var(--w-max);margin-inline:auto;padding-inline:var(--pad-x)}
+.chapter{padding-block:var(--space-chapter)}
+.chapter-head{display:grid;gap:22px;margin-bottom:clamp(44px,7vh,76px)}
+.chapter-head .top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.rule{height:1px;background:linear-gradient(to right,var(--line),transparent);border:0}
+html[dir="rtl"] .rule{background:linear-gradient(to left,var(--line),transparent)}
+
+/* ---------- reveal (progressive enhancement: visible unless .js) ---------- */
+html.js .reveal{opacity:0;transform:translateY(26px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
+html.js .reveal.in{opacity:1;transform:none}
+html.js .reveal[data-delay="1"]{transition-delay:.08s}
+html.js .reveal[data-delay="2"]{transition-delay:.16s}
+html.js .reveal[data-delay="3"]{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){
+  html.js .reveal{opacity:1;transform:none}
+}
+
+/* ---------- nav ---------- */
+.skip{position:fixed;top:-60px;inset-inline-start:16px;z-index:120;background:var(--gold);color:var(--night);padding:10px 18px;font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;transition:top .3s var(--ease)}
+.skip:focus{top:14px}
+.nav{
+  position:fixed;top:0;inset-inline:0;z-index:100;
+  transition:background .5s var(--ease),border-color .5s var(--ease),backdrop-filter .5s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{background:#030A12E6;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:var(--w-max);margin-inline:auto;padding:16px var(--pad-x)}
+.brand{display:flex;align-items:center;gap:13px;min-width:0}
+.brand-mark{width:34px;height:34px;flex:none;color:var(--gold)}
+.brand-text{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+.brand-name{font-family:var(--font-display);font-size:19px;letter-spacing:.14em;color:var(--bone)}
+html[lang="ar"] .brand-name{letter-spacing:0;font-size:21px}
+.brand-sub{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.2em;color:var(--slate-dim);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+html[lang="ar"] .brand-sub{letter-spacing:.06em;font-size:10.5px}
+.nav-links{display:flex;align-items:center;gap:26px;list-style:none}
+.nav-links a{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);transition:color .3s}
+html[lang="ar"] .nav-links a{font-family:var(--font-body);letter-spacing:.02em;font-size:13.5px}
+.nav-links a:hover,.nav-links a.active{color:var(--champagne)}
+.nav-actions{display:flex;align-items:center;gap:14px}
+.lang-btn{
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;
+  border:1px solid var(--line);padding:7px 14px;color:var(--bone-dim);
+  transition:border-color .3s,color .3s;border-radius:2px;
+}
+.lang-btn:hover{border-color:var(--gold-deep);color:var(--champagne)}
+.lang-btn .ar-glyph{font-family:'Amiri',serif;font-size:15px}
+.burger{display:none;flex-direction:column;gap:5px;padding:8px}
+.burger span{width:22px;height:1.5px;background:var(--bone);transition:transform .35s var(--ease),opacity .35s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{
+  position:fixed;inset:0;z-index:99;background:#030A12F5;
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  display:flex;flex-direction:column;justify-content:center;padding:0 var(--pad-x);
+  opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility .45s;
+}
+.mobile-menu.open{opacity:1;visibility:visible}
+.mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.mobile-menu a{display:flex;align-items:baseline;gap:16px;padding:11px 0;font-family:var(--font-display);font-size:clamp(24px,6vw,34px);color:var(--bone-dim);transition:color .3s}
+.mobile-menu a:hover{color:var(--champagne)}
+.mobile-menu .m-bearing{font-family:var(--font-mono);font-size:11px;color:var(--gold-deep);letter-spacing:.15em}
+
+/* ---------- the signature: bearing instrument ---------- */
+.instrument{
+  position:fixed;z-index:90;inset-inline-end:22px;bottom:22px;
+  display:flex;align-items:center;gap:12px;
+  background:#0A1626D9;border:1px solid var(--line);border-radius:3px;
+  padding:9px 13px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  opacity:0;transform:translateY(12px);
+  transition:opacity .6s var(--ease),transform .6s var(--ease);
+  pointer-events:none;
+}
+.instrument.on{opacity:1;transform:none}
+.dial{width:34px;height:34px;flex:none}
+.dial .ring{transition:none}
+.inst-read{display:flex;flex-direction:column;line-height:1.35}
+.inst-deg{font-family:var(--font-mono);font-size:13px;letter-spacing:.12em;color:var(--champagne);font-variant-numeric:tabular-nums}
+.inst-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--slate-dim)}
+html[lang="ar"] .inst-label{font-family:var(--font-body);letter-spacing:.05em;font-size:10px}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding-top:110px;padding-bottom:70px;overflow:hidden;
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(30px,5vw,70px);align-items:center}
+.hero-tag{margin-bottom:26px}
+.hero .h1{margin-bottom:30px}
+.hero-lede{margin-bottom:42px}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  padding:15px 26px;border-radius:2px;transition:all .35s var(--ease);
+}
+html[lang="ar"] .btn{font-family:var(--font-body);letter-spacing:.03em;font-size:14px}
+.btn-gold{background:var(--gold);color:var(--night);border:1px solid var(--gold)}
+.btn-gold:hover{background:var(--champagne);border-color:var(--champagne)}
+.btn-ghost{border:1px solid var(--line);color:var(--bone-dim)}
+.btn-ghost:hover{border-color:var(--gold-deep);color:var(--champagne)}
+.btn .arr{transition:transform .35s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+html[dir="rtl"] .btn:hover .arr{transform:translateX(-4px)}
+
+/* hero azimuth ring */
+.hero-ring-wrap{position:relative;display:flex;align-items:center;justify-content:center}
+.hero-ring{width:min(430px,78vw);aspect-ratio:1;position:relative}
+.hero-ring svg{width:100%;height:100%;overflow:visible}
+.ring-rotor{transform-origin:50% 50%;will-change:transform}
+.hero-ring .ar-word{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  text-align:center;
+}
+.ar-word .samt-ar{font-family:'Amiri',serif;font-size:clamp(64px,9vw,104px);color:var(--bone);line-height:1;font-weight:400}
+.ar-word .samt-en{font-family:var(--font-mono);font-size:11px;letter-spacing:.55em;color:var(--gold);text-transform:uppercase;padding-inline-start:.55em}
+.ar-word .samt-mean{font-family:var(--font-display);font-size:13.5px;color:var(--slate);letter-spacing:.06em;margin-top:4px}
+html[lang="ar"] .ar-word .samt-mean{font-family:var(--font-body);font-size:13px}
+
+.scroll-cue{
+  position:absolute;bottom:26px;inset-inline-start:var(--pad-x);
+  display:flex;align-items:center;gap:12px;color:var(--slate-dim);
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;
+}
+html[lang="ar"] .scroll-cue{font-family:var(--font-body);letter-spacing:.08em;font-size:12px}
+.scroll-cue .line{width:1px;height:44px;background:linear-gradient(var(--gold),transparent);animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- stats strip ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line)}
+.stat{padding:30px 22px;border-inline-end:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.stat:last-child{border-inline-end:0}
+.stat-n{font-family:var(--font-display);font-size:clamp(34px,4vw,52px);color:var(--champagne);line-height:1;font-variant-numeric:tabular-nums}
+.stat-n .unit{font-size:.42em;color:var(--gold);letter-spacing:.08em}
+.stat-l{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--slate)}
+html[lang="ar"] .stat-l{font-family:var(--font-body);letter-spacing:.03em;font-size:12.5px}
+
+/* ---------- chapter 01 : the name ---------- */
+.name-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,6vw,90px);align-items:start}
+.name-callig{
+  position:sticky;top:120px;
+  display:flex;flex-direction:column;gap:18px;align-items:flex-start;
+}
+.name-callig .big-ar{font-family:'Amiri',serif;font-size:clamp(96px,13vw,180px);line-height:1;color:var(--bone)}
+.name-callig .translit{font-family:var(--font-mono);font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold)}
+.root-row{display:flex;gap:14px;align-items:center;font-family:'Amiri',serif;font-size:26px;color:var(--slate)}
+.root-row .dot{width:4px;height:4px;background:var(--gold-deep);border-radius:50%}
+.name-body{display:flex;flex-direction:column;gap:26px}
+.defn{border:1px solid var(--line);background:var(--ink);padding:26px 28px;border-radius:3px}
+.defn .defn-term{font-family:var(--font-mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+html[lang="ar"] .defn .defn-term{font-family:var(--font-body);letter-spacing:.05em;font-size:12.5px}
+.defn p{color:var(--bone-dim)}
+
+/* ---------- chapter 02 : journey (bearings) ---------- */
+.journey-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.jr{
+  display:grid;grid-template-columns:150px 1fr 1.4fr;gap:26px;align-items:baseline;
+  padding:30px 6px;border-bottom:1px solid var(--line);
+  transition:background .4s var(--ease);position:relative;
+}
+.jr:hover{background:#0A162666}
+.jr-deg{font-family:var(--font-mono);font-size:14px;letter-spacing:.14em;color:var(--gold);font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:10px}
+.jr-deg .tick{width:9px;height:9px;border:1px solid var(--gold-deep);transform:rotate(45deg);flex:none}
+.jr-name{font-family:var(--font-display);font-size:clamp(21px,2.3vw,29px);color:var(--bone)}
+.jr-desc{color:var(--slate);font-size:15.5px;line-height:1.65}
+.jr-close{grid-template-columns:150px 1fr;border-bottom:0;padding-top:38px}
+.jr-close .jr-name{color:var(--champagne)}
+
+/* ---------- chapter 03 : selection gates ---------- */
+.gates{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.gate{background:var(--night);padding:34px 30px;display:flex;flex-direction:column;gap:14px;transition:background .4s var(--ease)}
+.gate:hover{background:var(--ink)}
+.gate-top{display:flex;align-items:center;justify-content:space-between}
+.gate-num{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.24em;color:var(--gold)}
+.gate-glyph{width:22px;height:22px;color:var(--gold-deep)}
+.gate h3{font-family:var(--font-display);font-weight:400;font-size:22px;color:var(--bone)}
+.gate p{color:var(--slate);font-size:15px}
+
+/* ---------- chapter 04 : stations ---------- */
+.st-tabs{display:flex;gap:0;border:1px solid var(--line);border-radius:3px;overflow:hidden;margin-bottom:38px;flex-wrap:wrap}
+.st-tab{
+  flex:1;min-width:130px;padding:16px 12px;text-align:center;
+  font-family:var(--font-mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--slate);border-inline-end:1px solid var(--line);
+  transition:color .35s,background .35s;position:relative;
+}
+html[lang="ar"] .st-tab{font-family:var(--font-body);letter-spacing:.03em;font-size:13.5px}
+.st-tab:last-child{border-inline-end:0}
+.st-tab[aria-selected="true"]{color:var(--night);background:var(--gold)}
+.st-tab .st-num{display:block;font-size:9.5px;opacity:.75;margin-bottom:4px;letter-spacing:.3em}
+.st-panel{display:none;animation:panelIn .6s var(--ease)}
+.st-panel.show{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,64px);align-items:start}
+@keyframes panelIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.st-info{display:flex;flex-direction:column;gap:22px}
+.st-kicker{display:flex;align-items:center;gap:14px}
+.st-kicker .flag-line{height:1px;flex:1;background:var(--line)}
+.st-info h3{font-family:var(--font-display);font-weight:400;font-size:clamp(26px,3vw,36px);color:var(--bone)}
+.st-info .st-role{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+html[lang="ar"] .st-info .st-role{font-family:var(--font-body);letter-spacing:.04em;font-size:13px}
+.st-meta{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.st-meta div{background:var(--ink);padding:16px 18px}
+.st-meta .k{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--slate-dim);margin-bottom:6px}
+html[lang="ar"] .st-meta .k{font-family:var(--font-body);letter-spacing:.04em;font-size:11px}
+.st-meta .v{font-size:14.5px;color:var(--bone-dim)}
+.st-eco{list-style:none;display:flex;flex-direction:column;gap:12px}
+.st-eco li{display:flex;gap:14px;align-items:baseline;color:var(--slate);font-size:15px}
+.st-eco li::before{content:"";width:7px;height:7px;border:1px solid var(--gold-deep);transform:rotate(45deg);flex:none;position:relative;top:-1px}
+.st-visual{position:relative;border:1px solid var(--line);background:var(--ink);border-radius:3px;overflow:hidden;min-height:320px;display:flex;align-items:center;justify-content:center;padding:34px}
+.st-visual svg{width:min(300px,70%);height:auto;color:var(--gold)}
+.st-visual .st-coord{position:absolute;bottom:14px;inset-inline-start:16px;font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;color:var(--slate-dim)}
+.st-visual .st-week{position:absolute;top:14px;inset-inline-end:16px;font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;color:var(--gold)}
+
+/* ---------- chapter 05 : competencies ---------- */
+.comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.comp{background:var(--night);padding:32px 28px;display:flex;flex-direction:column;gap:14px;transition:background .4s var(--ease)}
+.comp:hover{background:var(--ink)}
+.comp-glyph{width:26px;height:26px;color:var(--gold)}
+.comp h3{font-family:var(--font-display);font-weight:400;font-size:20px;color:var(--bone);line-height:1.35}
+.comp p{color:var(--slate);font-size:14.5px;line-height:1.62}
+
+/* ---------- chapter 06 : assessment chain ---------- */
+.chain{display:flex;flex-direction:column;position:relative;padding-inline-start:34px}
+.chain::before{content:"";position:absolute;inset-block:8px;inset-inline-start:8px;width:1px;background:linear-gradient(var(--gold-deep),var(--line))}
+.chain-item{position:relative;padding-block:20px;display:flex;flex-direction:column;gap:6px}
+.chain-item::before{
+  content:"";position:absolute;inset-inline-start:-30px;top:29px;
+  width:9px;height:9px;background:var(--night);border:1px solid var(--gold);transform:rotate(45deg);
+}
+.chain-item .c-num{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.24em;color:var(--gold)}
+.chain-item h3{font-family:var(--font-display);font-weight:400;font-size:21px;color:var(--bone)}
+.chain-item p{color:var(--slate);font-size:15px;max-width:52ch}
+.assess-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,6vw,80px);align-items:start}
+.assess-side{position:sticky;top:120px;display:flex;flex-direction:column;gap:24px}
+
+/* ---------- chapter 07 : impact ---------- */
+.impact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.imp{background:var(--night);padding:36px 32px;display:flex;flex-direction:column;gap:10px;transition:background .4s var(--ease)}
+.imp:hover{background:var(--ink)}
+.imp-n{font-family:var(--font-display);font-size:clamp(40px,5vw,64px);color:var(--champagne);line-height:1;display:flex;align-items:baseline;gap:10px;font-variant-numeric:tabular-nums}
+.imp-n .unit{font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+html[lang="ar"] .imp-n .unit{font-family:var(--font-body);letter-spacing:.04em;font-size:13px}
+.imp h3{font-family:var(--font-display);font-weight:400;font-size:20px;color:var(--bone)}
+.imp p{color:var(--slate);font-size:14.5px}
+
+/* ---------- chapter 08 : admission ---------- */
+.admission{position:relative;text-align:center;padding-block:var(--space-chapter)}
+.admission .close-ring{width:min(150px,38vw);margin-inline:auto;margin-bottom:36px;color:var(--gold)}
+.admission .h2{margin-bottom:22px}
+.admission .lede{margin-inline:auto;margin-bottom:46px}
+.adm-stats{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line);margin-bottom:52px;text-align:start}
+.adm-note{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;color:var(--slate-dim);text-transform:uppercase}
+html[lang="ar"] .adm-note{font-family:var(--font-body);letter-spacing:.03em;font-size:12.5px}
+
+/* ---------- footer ---------- */
+.footer{border-top:1px solid var(--line);padding-block:54px 40px;position:relative;z-index:1}
+.foot-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start;margin-bottom:40px}
+.foot-brand{display:flex;flex-direction:column;gap:12px;max-width:340px}
+.foot-links{display:flex;gap:26px;list-style:none;flex-wrap:wrap}
+.foot-links a{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);transition:color .3s}
+html[lang="ar"] .foot-links a{font-family:var(--font-body);letter-spacing:.03em;font-size:13px}
+.foot-links a:hover{color:var(--champagne)}
+.disclaimer{border-top:1px solid var(--line-soft);padding-top:26px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;color:var(--slate-dim);font-size:12.5px}
+.disclaimer .legal{max-width:60ch}
+
+/* ---------- responsive ---------- */
+@media (max-width:1020px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .hero-ring-wrap{order:-1;margin-top:8px}
+  .hero-ring{width:min(300px,64vw)}
+  .name-grid,.assess-grid,.st-panel.show{grid-template-columns:1fr}
+  .name-callig,.assess-side{position:static}
+  .comp-grid{grid-template-columns:repeat(2,1fr)}
+  .jr{grid-template-columns:110px 1fr;row-gap:8px}
+  .jr-desc{grid-column:2}
+}
+@media (max-width:640px){
+  .stats,.adm-stats{grid-template-columns:repeat(2,1fr)}
+  .stat{border-bottom:1px solid var(--line)}
+  .stat:nth-child(even){border-inline-end:0}
+  .stat:nth-child(n+3){border-bottom:0}
+  .comp-grid,.gates{grid-template-columns:1fr}
+  .jr{grid-template-columns:1fr}
+  .jr-desc{grid-column:1}
+  .instrument{inset-inline-end:14px;bottom:14px;padding:8px 11px}
+  .st-tab{min-width:0;flex:1 1 45%;border-bottom:1px solid var(--line)}
+  .hero{padding-top:96px}
+  .scroll-cue{display:none}
+}
+</style>
+</head>
+<body>
+<div class="graticule" aria-hidden="true"></div>
+<div class="halo" aria-hidden="true"></div>
+
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+<!-- ══════════ NAV ══════════ -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#hero" aria-label="SAMT — home">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M20 3v6M20 31v6M3 20h6M31 20h6" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M20 11l6.5 15.5L20 22.6 13.5 26.5Z" fill="currentColor"/>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name" data-i18n="brand">SAMT</span>
+        <span class="brand-sub" data-i18n="brandSub">Strategic Advancement, Management &amp; Transformation</span>
+      </span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="#programme" data-i18n="navProgramme">Programme</a></li>
+        <li><a href="#journey" data-i18n="navJourney">Journey</a></li>
+        <li><a href="#stations" data-i18n="navStations">Stations</a></li>
+        <li><a href="#competencies" data-i18n="navCompetencies">Competencies</a></li>
+        <li><a href="#assessment" data-i18n="navAssessment">Assessment</a></li>
+        <li><a href="#admission" data-i18n="navAdmission">Admission</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="lang-btn" id="langBtn" aria-label="Switch language / تبديل اللغة"><span id="langBtnTxt"><span class="ar-glyph">ع</span></span></button>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <ul>
+    <li><a href="#programme"><span class="m-bearing">01</span><span data-i18n="navProgramme">Programme</span></a></li>
+    <li><a href="#journey"><span class="m-bearing">02</span><span data-i18n="navJourney">Journey</span></a></li>
+    <li><a href="#stations"><span class="m-bearing">03</span><span data-i18n="navStations">Stations</span></a></li>
+    <li><a href="#competencies"><span class="m-bearing">04</span><span data-i18n="navCompetencies">Competencies</span></a></li>
+    <li><a href="#assessment"><span class="m-bearing">05</span><span data-i18n="navAssessment">Assessment</span></a></li>
+    <li><a href="#admission"><span class="m-bearing">06</span><span data-i18n="navAdmission">Admission</span></a></li>
+  </ul>
+</div>
+
+<!-- ══════════ BEARING INSTRUMENT (signature) ══════════ -->
+<div class="instrument" id="instrument" aria-hidden="true">
+  <svg class="dial" viewBox="0 0 40 40" fill="none">
+    <circle cx="20" cy="20" r="17.5" stroke="#1B2B41" stroke-width="1"/>
+    <g id="miniRotor" class="ring-rotor"></g>
+    <path d="M20 8l3.4 8.6L20 14.6l-3.4 2Z" fill="#C3A24A"/>
+  </svg>
+  <div class="inst-read">
+    <span class="inst-deg" id="instDeg">000.0°</span>
+    <span class="inst-label" id="instLabel" data-i18n="instStart">Potential</span>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow hero-tag reveal" data-i18n="heroTag">An elite leadership programme</p>
+      <h1 class="display h1 reveal" data-delay="1" data-i18n-html="heroH1">Prepared to lead.<br>Ready to <em>command.</em></h1>
+      <p class="lede hero-lede reveal" data-delay="2" data-i18n="heroLede">SAMT identifies exceptional talent and prepares selected individuals for future command, strategic leadership and greater institutional responsibility.</p>
+      <div class="hero-ctas reveal" data-delay="3">
+        <a class="btn btn-gold" href="#name"><span data-i18n="heroCta1">The story of the name</span><span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#programme"><span data-i18n="heroCta2">Discover the programme</span></a>
+      </div>
+    </div>
+    <div class="hero-ring-wrap reveal" data-delay="2">
+      <div class="hero-ring" aria-hidden="true">
+        <svg viewBox="0 0 400 400" fill="none">
+          <circle cx="200" cy="200" r="192" stroke="#1B2B41" stroke-width="1"/>
+          <circle cx="200" cy="200" r="150" stroke="#1B2B4180" stroke-width="1"/>
+          <g id="heroRotor" class="ring-rotor"></g>
+          <g font-family="IBM Plex Mono,monospace" font-size="11" fill="#6B7B8F" letter-spacing="2">
+            <text x="200" y="24" text-anchor="middle">000</text>
+            <text x="382" y="204" text-anchor="middle">090</text>
+            <text x="200" y="388" text-anchor="middle">180</text>
+            <text x="18" y="204" text-anchor="middle">270</text>
+          </g>
+          <path d="M200 62l7 17-7-4-7 4Z" fill="#C3A24A"/>
+        </svg>
+        <div class="ar-word">
+          <span class="samt-ar">سَمْت</span>
+          <span class="samt-en">SAMT</span>
+          <span class="samt-mean" data-i18n="heroRingMean">the exact bearing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><span class="line"></span><span data-i18n="scrollCue">Set your bearing</span></div>
+</section>
+
+<!-- ══════════ CH 01 — THE NAME ══════════ -->
+<section class="chapter" id="name">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="top">
+        <p class="eyebrow" data-i18n="nameEyebrow">Chapter 01 — The name</p>
+        <span class="bearing-tag" data-i18n="nameBearing">EVERY LEADER BEGINS WITH A DIRECTION</span>
+      </div>
+      <h2 class="display h2" data-i18n-html="nameH2">Before the programme,<br>a <em>word.</em></h2>
+    </div>
+    <div class="name-grid">
+      <div class="name-callig reveal">
+        <span class="big-ar">سَمْت</span>
+        <span class="translit">SAMT</span>
+        <div class="root-row" aria-hidden="true"><span>س</span><span class="dot"></span><span>م</span><span class="dot"></span><span>ت</span></div>
+      </div>
+      <div class="name-body">
+        <div class="defn reveal">
+          <p class="defn-term" data-i18n="defn1Term">Classical Arabic — noun</p>
+          <p data-i18n="defn1Body">As-samt: the exact bearing of a path — the precise direction one holds toward a destination. In classical usage it also names a person's composed, dignified manner: the way a leader carries themselves.</p>
+        </div>
+        <div class="defn reveal" data-delay="1">
+          <p class="defn-term" data-i18n="defn2Term">From Arabic to the world</p>
+          <p data-i18n="defn2Body">From its plural, as-sumūt, the world's languages took the word azimuth — the angle by which navigators, astronomers and aviators set an exact course. A word born in Arabic now directs every compass on earth.</p>
+        </div>
+        <p class="aphorism reveal" data-delay="2" data-i18n="nameAphorism">Every leader begins with a direction. Every direction begins with a meaning.</p>
+        <p class="body-dim reveal" data-delay="3" data-i18n="nameClose">SAMT takes its name seriously. The programme does not broaden potential in every direction — it sets one exact bearing: command. Everything that follows on this page is that bearing, held.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CH 02 — PROGRAMME ══════════ -->
+<section class="chapter" id="programme">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="top">
+        <p class="eyebrow" data-i18n="progEyebrow">Chapter 02 — The programme</p>
+        <span class="bearing-tag" data-i18n="progBearing">SELECTIVE BY DESIGN</span>
+      </div>
+      <h2 class="display h2" data-i18n-html="progH2">Selection is earned.<br><em>Leadership is formed.</em></h2>
+    </div>
+    <div class="name-grid">
+      <div class="reveal">
+        <p class="lede" data-i18n="progLede">SAMT is designed for exceptional professionals who demonstrate the character, intellect, judgement, discipline and ambition required to assume future command and senior leadership responsibilities.</p>
+      </div>
+      <div class="reveal" data-delay="1">
+        <p class="aphorism" data-i18n="progAphorism">Entry is earned. Development is demanding. Readiness is evidenced.</p>
+      </div>
+    </div>
+    <div class="stats reveal" data-delay="1" style="margin-top:64px">
+      <div class="stat"><span class="stat-n"><span class="count" data-count="10">10</span></span><span class="stat-l" data-i18n="stat1">Selected fellows</span></div>
+      <div class="stat"><span class="stat-n"><span class="count" data-count="4">4</span></span><span class="stat-l" data-i18n="stat2">International stations</span></div>
+      <div class="stat"><span class="stat-n"><span class="count" data-count="16">16</span></span><span class="stat-l" data-i18n="stat3">Full-time weeks</span></div>
+      <div class="stat"><span class="stat-n"><span class="count" data-count="1">1</span></span><span class="stat-l" data-i18n="stat4">Command standard</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CH 03 — JOURNEY ══════════ -->
+<section class="chapter" id="journey">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="top">
+        <p class="eyebrow" data-i18n="jrEyebrow">Chapter 03 — The journey</p>
+        <span class="bearing-tag">000° → 360°</span>
+      </div>
+      <h2 class="display h2" data-i18n-html="jrH2">A disciplined path from<br><em>potential to command.</em></h2>
+      <p class="body-dim" data-i18n="jrLede">Six bearings, one circle. Every stage raises the standard of judgement, character, exposure and responsibility — until the needle returns to true north, changed.</p>
+    </div>
+    <div class="journey-list">
+      <div class="jr reveal"><span class="jr-deg"><span class="tick"></span>000°</span><span class="jr-name" data-i18n="jr1n">Potential</span><span class="jr-desc" data-i18n="jr1d">Exceptional potential is identified — evidence of character and capability before any title.</span></div>
+      <div class="jr reveal"><span class="jr-deg"><span class="tick"></span>060°</span><span class="jr-name" data-i18n="jr2n">Selection</span><span class="jr-desc" data-i18n="jr2d">A rigorous and selective admission process. Few enter; every entry is defended by evidence.</span></div>
+      <div class="jr reveal"><span class="jr-deg"><span class="tick"></span>120°</span><span class="jr-name" data-i18n="jr3n">Formation</span><span class="jr-desc" data-i18n="jr3d">Core capability and leadership judgement are developed under sustained institutional discipline.</span></div>
+      <div class="jr reveal"><span class="jr-deg"><span class="tick"></span>180°</span><span class="jr-name" data-i18n="jr4n">Exposure</span><span class="jr-desc" data-i18n="jr4d">National and international environments broaden perspective at the furthest point from home.</span></div>
+      <div class="jr reveal"><span class="jr-deg"><span class="tick"></span>240°</span><span class="jr-name" data-i18n="jr5n">Transformation</span><span class="jr-desc" data-i18n="jr5d">Leadership readiness is measured, strengthened and made visible in decisions under pressure.</span></div>
+      <div class="jr reveal"><span class="jr-deg"><span class="tick"></span>300°</span><span class="jr-name" data-i18n="jr6n">Command readiness</span><span class="jr-desc" data-i18n="jr6d">Prepared to lead. Ready to command. The standard is met — and independently evidenced.</span></div>
+      <div class="jr jr-close reveal"><span class="jr-deg"><span class="tick"></span>360°</span><span class="jr-name" data-i18n="jrClose">The circle closes at true north — the same point, a different leader.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CH 04 — SELECTION ══════════ -->
+<section class="chapter" id="selection">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="top">
+        <p class="eyebrow" data-i18n="selEyebrow">Chapter 04 — Selection</p>
+        <span class="bearing-tag" data-i18n="selBearing">FOUR GATES, ONE STANDARD</span>
+      </div>
+      <h2 class="display h2" data-i18n-html="selH2">A leadership privilege.<br><em>Not a training seat.</em></h2>
+      <p class="body-dim" data-i18n="selLede">SAMT selects high-potential professionals through evidence, assessment and independent judgement. Each gate must be passed in order; none may be waived.</p>
+    </div>
+    <div class="gates">
+      <div class="gate reveal">
+        <div class="gate-top"><span class="gate-num" data-i18n="gate1num">Gate 01</span>
+          <svg class="gate-glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6.3" y="6.3" width="11.4" height="11.4" transform="rotate(45 12 12)" stroke="currentColor" stroke-width="1.3"/></svg>
+        </div>
+        <h3 data-i18n="gate1h">Eligibility</h3>
+        <p data-i18n="gate1p">Minimum experience and documented performance. The record speaks before the candidate does.</p>
+      </div>
+      <div class="gate reveal" data-delay="1">
+        <div class="gate-top"><span class="gate-num" data-i18n="gate2num">Gate 02</span>
+          <svg class="gate-glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.3"/></svg>
+        </div>
+        <h3 data-i18n="gate2h">Assessment centre</h3>
+        <p data-i18n="gate2p">Analysis, collaboration and decision under pressure — observed, scored and compared against the command standard.</p>
+      </div>
+      <div class="gate reveal" data-delay="2">
+        <div class="gate-top"><span class="gate-num" data-i18n="gate3num">Gate 03</span>
+          <svg class="gate-glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="square"/></svg>
+        </div>
+        <h3 data-i18n="gate3h">Executive interview</h3>
+        <p data-i18n="gate3p">Motivation, humility, judgement and leadership potential — examined by those who carry command themselves.</p>
+      </div>
+      <div class="gate reveal" data-delay="3">
+        <div class="gate-top"><span class="gate-num" data-i18n="gate4num">Gate 04</span>
+          <svg class="gate-glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.3"/><path d="M8.2 12.2l2.6 2.6 5-5.4" stroke="currentColor" stroke-width="1.3"/></svg>
+        </div>
+        <h3 data-i18n="gate4h">Independent endorsement</h3>
+        <p data-i18n="gate4p">Final decision by a multidisciplinary panel. No single voice admits a fellow; the institution does.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CH 05 — STATIONS ══════════ -->
+<section class="chapter" id="stations">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="top">
+        <p class="eyebrow" data-i18n="stEyebrow">Chapter 05 — Preparation stations</p>
+        <span class="bearing-tag" data-i18n="stBearing">ONE ROUTE, FOUR NATIONS, 16 WEEKS</span>
+      </div>
+      <h2 class="display h2" data-i18n-html="stH2">Global exposure.<br><em>Strategic perspective.</em></h2>
+      <p class="body-dim" data-i18n="stLede">Fellows engage with leading institutions, sectors and operating environments that shape global leadership — beginning at home, returning changed.</p>
+    </div>
+    <div class="st-tabs" role="tablist" aria-label="Preparation stations">
+      <button class="st-tab" role="tab" id="tab-uae" aria-selected="true" aria-controls="panel-uae"><span class="st-num">01</span><span data-i18n="stTab1">UAE</span></button>
+      <button class="st-tab" role="tab" id="tab-uk" aria-selected="false" aria-controls="panel-uk"><span class="st-num">02</span><span data-i18n="stTab2">United Kingdom</span></button>
+      <button class="st-tab" role="tab" id="tab-fr" aria-selected="false" aria-controls="panel-fr"><span class="st-num">03</span><span data-i18n="stTab3">France</span></button>
+      <button class="st-tab" role="tab" id="tab-us" aria-selected="false" aria-controls="panel-us"><span class="st-num">04</span><span data-i18n="stTab4">United States</span></button>
+    </div>
+
+    <div class="st-panel show" id="panel-uae" role="tabpanel" aria-labelledby="tab-uae">
+      <div class="st-info">
+        <p class="st-role" data-i18n="st1role">Station 01 — National foundation</p>
+        <h3 data-i18n="st1h">United Arab Emirates</h3>
+        <p class="body-dim" data-i18n="st1p">A national foundation station connecting leadership formation with the UAE defence, aviation, advanced-technology and sustainability ecosystems — the bearing is set at home before it is tested abroad.</p>
+        <div class="st-meta">
+          <div><p class="k" data-i18n="stMetaDur">Duration</p><p class="v" data-i18n="st1dur">3 weeks</p></div>
+          <div><p class="k" data-i18n="stMetaFocus">Primary focus</p><p class="v" data-i18n="st1focus">National capability &amp; transformation</p></div>
+        </div>
+        <ul class="st-eco">
+          <li data-i18n="st1e1">Tawazun and national capability governance</li>
+          <li data-i18n="st1e2">EDGE and GAL defence and aviation ecosystems</li>
+          <li data-i18n="st1e3">TII, Masdar, emerging technology and sustainability</li>
+        </ul>
+      </div>
+      <div class="st-visual reveal">
+        <span class="st-week">W 01–03</span>
+        <svg viewBox="0 0 200 200" fill="none" aria-hidden="true">
+          <circle cx="100" cy="100" r="92" stroke="currentColor" stroke-opacity=".28" stroke-width="1"/>
+          <circle cx="100" cy="100" r="64" stroke="currentColor" stroke-opacity=".16" stroke-width="1"/>
+          <path d="M100 100L100 12" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M100 12l5 12-5-3-5 3Z" fill="currentColor"/>
+          <circle cx="100" cy="100" r="3.5" fill="currentColor"/>
+          <text x="100" y="152" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="34" fill="currentColor" fill-opacity=".9">01</text>
+        </svg>
+        <span class="st-coord">24.45°N — 54.38°E · ABU DHABI</span>
+      </div>
+    </div>
+
+    <div class="st-panel" id="panel-uk" role="tabpanel" aria-labelledby="tab-uk" hidden>
+      <div class="st-info">
+        <p class="st-role" data-i18n="st2role">Station 02 — Command tradition</p>
+        <h3 data-i18n="st2h">United Kingdom</h3>
+        <p class="body-dim" data-i18n="st2p">An immersion in one of the world's deepest command traditions — where leadership doctrine, institutional continuity and a sovereign defence-industrial base have been refined across centuries.</p>
+        <div class="st-meta">
+          <div><p class="k" data-i18n="stMetaDur">Duration</p><p class="v" data-i18n="st2dur">4 weeks</p></div>
+          <div><p class="k" data-i18n="stMetaFocus">Primary focus</p><p class="v" data-i18n="st2focus">Command doctrine &amp; institutional tradition</p></div>
+        </div>
+        <ul class="st-eco">
+          <li data-i18n="st2e1">Staff-college leadership doctrine and command studies</li>
+          <li data-i18n="st2e2">Sovereign defence-industrial base engagement</li>
+          <li data-i18n="st2e3">London strategic policy and institutional governance</li>
+        </ul>
+      </div>
+      <div class="st-visual reveal">
+        <span class="st-week">W 04–07</span>
+        <svg viewBox="0 0 200 200" fill="none" aria-hidden="true">
+          <circle cx="100" cy="100" r="92" stroke="currentColor" stroke-opacity=".28" stroke-width="1"/>
+          <circle cx="100" cy="100" r="64" stroke="currentColor" stroke-opacity=".16" stroke-width="1"/>
+          <g transform="rotate(-42 100 100)"><path d="M100 100L100 12" stroke="currentColor" stroke-width="1.4"/><path d="M100 12l5 12-5-3-5 3Z" fill="currentColor"/></g>
+          <circle cx="100" cy="100" r="3.5" fill="currentColor"/>
+          <text x="100" y="152" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="34" fill="currentColor" fill-opacity=".9">02</text>
+        </svg>
+        <span class="st-coord">51.51°N — 0.13°W · LONDON</span>
+      </div>
+    </div>
+
+    <div class="st-panel" id="panel-fr" role="tabpanel" aria-labelledby="tab-fr" hidden>
+      <div class="st-info">
+        <p class="st-role" data-i18n="st3role">Station 03 — Aerospace power</p>
+        <h3 data-i18n="st3h">France</h3>
+        <p class="body-dim" data-i18n="st3p">A station inside Europe's aerospace heartland — where strategic autonomy is doctrine, and combat-air, space and dual-use innovation are built as instruments of sovereignty.</p>
+        <div class="st-meta">
+          <div><p class="k" data-i18n="stMetaDur">Duration</p><p class="v" data-i18n="st3dur">4 weeks</p></div>
+          <div><p class="k" data-i18n="stMetaFocus">Primary focus</p><p class="v" data-i18n="st3focus">Aerospace power &amp; strategic autonomy</p></div>
+        </div>
+        <ul class="st-eco">
+          <li data-i18n="st3e1">European aerospace and combat-air ecosystems</li>
+          <li data-i18n="st3e2">Strategic-autonomy doctrine and senior defence education</li>
+          <li data-i18n="st3e3">Paris innovation and dual-use technology environment</li>
+        </ul>
+      </div>
+      <div class="st-visual reveal">
+        <span class="st-week">W 08–11</span>
+        <svg viewBox="0 0 200 200" fill="none" aria-hidden="true">
+          <circle cx="100" cy="100" r="92" stroke="currentColor" stroke-opacity=".28" stroke-width="1"/>
+          <circle cx="100" cy="100" r="64" stroke="currentColor" stroke-opacity=".16" stroke-width="1"/>
+          <g transform="rotate(-18 100 100)"><path d="M100 100L100 12" stroke="currentColor" stroke-width="1.4"/><path d="M100 12l5 12-5-3-5 3Z" fill="currentColor"/></g>
+          <circle cx="100" cy="100" r="3.5" fill="currentColor"/>
+          <text x="100" y="152" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="34" fill="currentColor" fill-opacity=".9">03</text>
+        </svg>
+        <span class="st-coord">48.86°N — 2.35°E · PARIS</span>
+      </div>
+    </div>
+
+    <div class="st-panel" id="panel-us" role="tabpanel" aria-labelledby="tab-us" hidden>
+      <div class="st-info">
+        <p class="st-role" data-i18n="st4role">Station 04 — Innovation at scale</p>
+        <h3 data-i18n="st4h">United States</h3>
+        <p class="body-dim" data-i18n="st4p">The final station, at maximum range from home — where defence innovation, acquisition at scale and alliance leadership converge, and where each fellow's bearing is tested hardest before the return.</p>
+        <div class="st-meta">
+          <div><p class="k" data-i18n="stMetaDur">Duration</p><p class="v" data-i18n="st4dur">5 weeks</p></div>
+          <div><p class="k" data-i18n="stMetaFocus">Primary focus</p><p class="v" data-i18n="st4focus">Innovation at scale &amp; alliance leadership</p></div>
+        </div>
+        <ul class="st-eco">
+          <li data-i18n="st4e1">Defence innovation and acquisition ecosystems</li>
+          <li data-i18n="st4e2">Aerospace primes and advanced-technology engagement</li>
+          <li data-i18n="st4e3">Washington policy, alliance and command institutions</li>
+        </ul>
+      </div>
+      <div class="st-visual reveal">
+        <span class="st-week">W 12–16</span>
+        <svg viewBox="0 0 200 200" fill="none" aria-hidden="true">
+          <circle cx="100" cy="100" r="92" stroke="currentColor" stroke-opacity=".28" stroke-width="1"/>
+          <circle cx="100" cy="100" r="64" stroke="currentColor" stroke-opacity=".16" stroke-width="1"/>
+          <g transform="rotate(-65 100 100)"><path d="M100 100L100 12" stroke="currentColor" stroke-width="1.4"/><path d="M100 12l5 12-5-3-5 3Z" fill="currentColor"/></g>
+          <circle cx="100" cy="100" r="3.5" fill="currentColor"/>
+          <text x="100" y="152" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="34" fill="currentColor" fill-opacity=".9">04</text>
+        </svg>
+        <span class="st-coord">38.90°N — 77.04°W · WASHINGTON</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CH 06 — COMPETENCIES ══════════ -->
+<section class="chapter" id="competencies">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="top">
+        <p class="eyebrow" data-i18n="compEyebrow">Chapter 06 — Leadership maturity</p>
+        <span class="bearing-tag" data-i18n="compBearing">SIX DIMENSIONS OF COMMAND</span>
+      </div>
+      <h2 class="display h2" data-i18n-html="compH2">Built for command.<br><em>Trusted to decide.</em></h2>
+    </div>
+    <div class="comp-grid">
+      <div class="comp reveal">
+        <svg class="comp-glyph" viewBox="0 0 26 26" fill="none" aria-hidden="true"><circle cx="13" cy="13" r="9.5" stroke="currentColor" stroke-width="1.2"/><path d="M13 1v5M13 20v5M1 13h5M20 13h5" stroke="currentColor" stroke-width="1.2"/></svg>
+        <h3 data-i18n="comp1h">Strategic judgement</h3>
+        <p data-i18n="comp1p">Read context, consequence and long-term institutional direction — and hold the bearing when others drift.</p>
+      </div>
+      <div class="comp reveal" data-delay="1">
+        <svg class="comp-glyph" viewBox="0 0 26 26" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="2.6" stroke="currentColor" stroke-width="1.2"/><circle cx="20" cy="8" r="2.6" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="20" r="2.6" stroke="currentColor" stroke-width="1.2"/><path d="M8.2 7.2l9.2 1M7.3 8.3l3.5 9.3M18.6 10.2l-5 7.6" stroke="currentColor" stroke-width="1.1"/></svg>
+        <h3 data-i18n="comp2h">Systems thinking</h3>
+        <p data-i18n="comp2p">Understand interdependence across people, capability and mission — no decision moves only one thing.</p>
+      </div>
+      <div class="comp reveal" data-delay="2">
+        <svg class="comp-glyph" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M13 3v20M13 8l-7 5 3.5 6M13 8l7 5-3.5 6" stroke="currentColor" stroke-width="1.2"/></svg>
+        <h3 data-i18n="comp3h">Decision under complexity</h3>
+        <p data-i18n="comp3p">Balance mission, risk, time and incomplete information — and decide when the picture will never be complete.</p>
+      </div>
+      <div class="comp reveal">
+        <svg class="comp-glyph" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M5 22h16M7 22V9h12v13M13 9V4M10 4h6" stroke="currentColor" stroke-width="1.2"/></svg>
+        <h3 data-i18n="comp4h">Institutional leadership</h3>
+        <p data-i18n="comp4p">Align strategy, people and governance toward sustained impact that outlasts any single leader.</p>
+      </div>
+      <div class="comp reveal" data-delay="1">
+        <svg class="comp-glyph" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M13 2l2.7 7.6L23 13l-7.3 3.4L13 24l-2.7-7.6L3 13l7.3-3.4Z" stroke="currentColor" stroke-width="1.2"/></svg>
+        <h3 data-i18n="comp5h">Innovation &amp; transformation</h3>
+        <p data-i18n="comp5p">Convert emerging possibilities into executable institutional change — from producer's seat, not consumer's.</p>
+      </div>
+      <div class="comp reveal" data-delay="2">
+        <svg class="comp-glyph" viewBox="0 0 26 26" fill="none" aria-hidden="true"><circle cx="13" cy="13" r="10" stroke="currentColor" stroke-width="1.2"/><path d="M3 13h20M13 3c3.4 2.8 5 6.2 5 10s-1.6 7.2-5 10c-3.4-2.8-5-6.2-5-10s1.6-7.2 5-10Z" stroke="currentColor" stroke-width="1.1"/></svg>
+        <h3 data-i18n="comp6h">International engagement</h3>
+        <p data-i18n="comp6p">Build trust, perspective and strategic partnerships across cultures — the UAE's bearing, understood abroad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CH 07 — ASSESSMENT ══════════ -->
+<section class="chapter" id="assessment">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="top">
+        <p class="eyebrow" data-i18n="assEyebrow">Chapter 07 — Assessment &amp; governance</p>
+        <span class="bearing-tag" data-i18n="assBearing">EVIDENCE, DAILY</span>
+      </div>
+    </div>
+    <div class="assess-grid">
+      <div class="assess-side reveal">
+        <h2 class="display h2" data-i18n-html="assH2">No progression without evidence.<br><em>No execution without governance.</em></h2>
+        <p class="body-dim" data-i18n="assLede">Development is measured continuously and governed through clear authority, independent evidence and disciplined decision points. Nothing is assumed; everything is recorded.</p>
+      </div>
+      <div class="chain">
+        <div class="chain-item reveal"><span class="c-num" data-i18n="ass1num">Evidence 01</span><h3 data-i18n="ass1h">Baseline</h3><p data-i18n="ass1p">A pre-programme capability profile — the fellow's starting bearing, measured before the first week begins.</p></div>
+        <div class="chain-item reveal"><span class="c-num" data-i18n="ass2num">Evidence 02</span><h3 data-i18n="ass2h">Daily evidence</h3><p data-i18n="ass2p">Tasks, conduct and reflection, captured every day across all sixteen weeks.</p></div>
+        <div class="chain-item reveal"><span class="c-num" data-i18n="ass3num">Evidence 03</span><h3 data-i18n="ass3h">Host assessment</h3><p data-i18n="ass3p">Independent observations from every hosting institution — four nations, one standard.</p></div>
+        <div class="chain-item reveal"><span class="c-num" data-i18n="ass4num">Evidence 04</span><h3 data-i18n="ass4h">Maturity challenge</h3><p data-i18n="ass4p">A decision exercise and executive briefing under pressure, before a senior panel.</p></div>
+        <div class="chain-item reveal"><span class="c-num" data-i18n="ass5num">Evidence 05</span><h3 data-i18n="ass5h">Impact project</h3><p data-i18n="ass5p">An institutional result with follow-through — the programme's value, delivered and owned.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CH 08 — IMPACT ══════════ -->
+<section class="chapter" id="impact">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="top">
+        <p class="eyebrow" data-i18n="impEyebrow">Chapter 08 — Institutional impact</p>
+        <span class="bearing-tag" data-i18n="impBearing">MEASURED AFTER THE RETURN</span>
+      </div>
+      <h2 class="display h2" data-i18n-html="impH2">Stronger leadership.<br><em>Stronger institutions.</em></h2>
+      <p class="body-dim" data-i18n="impLede">SAMT is measured by what changes after fellows return: better judgement, stronger networks, executable transformation and sustained institutional value.</p>
+    </div>
+    <div class="impact-grid">
+      <div class="imp reveal"><span class="imp-n"><span class="count" data-count="6">6</span><span class="unit" data-i18n="imp1u">competencies</span></span><h3 data-i18n="imp1h">Measurable leadership growth</h3><p data-i18n="imp1p">Evidence of progression across all six command-oriented competencies, from baseline to endorsement.</p></div>
+      <div class="imp reveal" data-delay="1"><span class="imp-n"><span class="count" data-count="4">4</span><span class="unit" data-i18n="imp2u">nations</span></span><h3 data-i18n="imp2h">Strategic networks</h3><p data-i18n="imp2p">National and international relationships built with purpose across four hosting environments.</p></div>
+      <div class="imp reveal"><span class="imp-n"><span class="count" data-count="3">3</span><span class="unit" data-i18n="imp3u">assignments</span></span><h3 data-i18n="imp3h">Transformation delivery</h3><p data-i18n="imp3p">Priority institutional challenges converted into owned, governed delivery plans.</p></div>
+      <div class="imp reveal" data-delay="1"><span class="imp-n"><span class="count" data-count="12">12</span><span class="unit" data-i18n="imp4u">months</span></span><h3 data-i18n="imp4h">Sustained institutional value</h3><p data-i18n="imp4p">Structured follow-up and impact measurement for a full year after the programme ends.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CH 09 — ADMISSION ══════════ -->
+<section class="admission" id="admission">
+  <div class="wrap">
+    <svg class="close-ring reveal" viewBox="0 0 160 160" fill="none" aria-hidden="true">
+      <circle cx="80" cy="80" r="74" stroke="#1B2B41" stroke-width="1"/>
+      <circle cx="80" cy="80" r="74" stroke="#C3A24A" stroke-width="1.4" stroke-dasharray="465" stroke-dashoffset="465" class="ring-close" transform="rotate(-90 80 80)"/>
+      <path d="M80 16l5.5 13.5L80 26l-5.5 3.5Z" fill="#C3A24A"/>
+      <text x="80" y="88" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="17" letter-spacing="3" fill="#E9D9A6">360°</text>
+    </svg>
+    <p class="eyebrow reveal" style="justify-content:center" data-i18n="admEyebrow">Chapter 09 — Admission</p>
+    <h2 class="display h2 reveal" data-delay="1" data-i18n-html="admH2">Selected for potential.<br><em>Shaped for command.</em></h2>
+    <p class="lede reveal" data-delay="2" data-i18n="admLede">Participation is by institutional nomination and a rigorous selection process. Admission is not open enrolment — the circle closes only for those who complete it.</p>
+    <div class="adm-stats reveal" data-delay="2">
+      <div class="stat"><span class="stat-n"><span class="count" data-count="5">5</span><span class="unit">+</span></span><span class="stat-l" data-i18n="adm1">Years of practical experience</span></div>
+      <div class="stat"><span class="stat-n"><span class="count" data-count="10">10</span></span><span class="stat-l" data-i18n="adm2">Fellows per cohort</span></div>
+      <div class="stat"><span class="stat-n"><span class="count" data-count="100">100</span><span class="unit">%</span></span><span class="stat-l" data-i18n="adm3">Full-time commitment</span></div>
+      <div class="stat"><span class="stat-n"><span class="count" data-count="1">1</span></span><span class="stat-l" data-i18n="adm4">Independent final endorsement</span></div>
+    </div>
+    <p class="adm-note reveal" data-delay="3" data-i18n="admNote">Nominations open by institutional invitation</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#hero">
+          <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M20 3v6M20 31v6M3 20h6M31 20h6" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M20 11l6.5 15.5L20 22.6 13.5 26.5Z" fill="currentColor"/>
+          </svg>
+          <span class="brand-text">
+            <span class="brand-name" data-i18n="brand">SAMT</span>
+            <span class="brand-sub" data-i18n="footTag">From potential to command</span>
+          </span>
+        </a>
+      </div>
+      <ul class="foot-links">
+        <li><a href="#name" data-i18n="footName">The name</a></li>
+        <li><a href="#programme" data-i18n="navProgramme">Programme</a></li>
+        <li><a href="#journey" data-i18n="navJourney">Journey</a></li>
+        <li><a href="#admission" data-i18n="navAdmission">Admission</a></li>
+        <li><a href="#hero" data-i18n="footTop">Back to true north</a></li>
+      </ul>
+    </div>
+    <div class="disclaimer">
+      <span data-i18n="footCopy">© 2026 SAMT. All rights reserved.</span>
+      <span class="legal" data-i18n="footLegal">Concept website. Proposed partners and programme arrangements are subject to formal approval and agreement.</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+/* runtime + bidi fixes */
+[dir="rtl"] .jr-deg,[dir="rtl"] .bearing-tag,[dir="rtl"] .inst-deg,[dir="rtl"] .st-coord,[dir="rtl"] .st-week,[dir="rtl"] .gate-num,[dir="rtl"] .c-num,[dir="rtl"] .st-num,[dir="rtl"] .samt-en,[dir="rtl"] .translit{direction:ltr;unicode-bidi:isolate}
+[id]{scroll-margin-top:92px}
+.ring-close{transition:stroke-dashoffset 2.4s cubic-bezier(.22,1,.36,1)}
+.ring-close.closed{stroke-dashoffset:0!important}
+@media (prefers-reduced-motion:reduce){.ring-close{transition:none}}
+body.menu-lock{overflow:hidden}
+</style>
+
+<script>
+(function(){
+'use strict';
+var doc = document, root = doc.documentElement;
+root.classList.add('js');
+
+/* ═══════════ i18n dictionaries ═══════════ */
+var I18N = {
+en: {
+  _docTitle:'SAMT — From Potential to Command',
+  _metaDesc:'SAMT is a selective leadership programme progressing exceptional potential toward command readiness through disciplined formation, international exposure and evidence-based assessment.',
+  _langBtn:'<span class="ar-glyph">\u0639</span>', _dir:'ltr',
+  skip:'Skip to content',
+  brand:'SAMT', brandSub:'Strategic Advancement, Management & Transformation',
+  navProgramme:'Programme', navJourney:'Journey', navStations:'Stations',
+  navCompetencies:'Competencies', navAssessment:'Assessment', navAdmission:'Admission',
+  instStart:'Potential',
+  heroTag:'An elite leadership programme',
+  heroH1:'Prepared to lead.<br>Ready to <em>command.</em>',
+  heroLede:'SAMT identifies exceptional talent and prepares selected individuals for future command, strategic leadership and greater institutional responsibility.',
+  heroCta1:'The story of the name', heroCta2:'Discover the programme',
+  heroRingMean:'the exact bearing', scrollCue:'Set your bearing',
+  nameEyebrow:'Chapter 01 — The name', nameBearing:'EVERY LEADER BEGINS WITH A DIRECTION',
+  nameH2:'Before the programme,<br>a <em>word.</em>',
+  defn1Term:'Classical Arabic — noun',
+  defn1Body:'As-samt: the exact bearing of a path — the precise direction one holds toward a destination. In classical usage it also names a person\u2019s composed, dignified manner: the way a leader carries themselves.',
+  defn2Term:'From Arabic to the world',
+  defn2Body:'From its plural, as-sum\u016bt, the world\u2019s languages took the word azimuth — the angle by which navigators, astronomers and aviators set an exact course. A word born in Arabic now directs every compass on earth.',
+  nameAphorism:'Every leader begins with a direction. Every direction begins with a meaning.',
+  nameClose:'SAMT takes its name seriously. The programme does not broaden potential in every direction — it sets one exact bearing: command. Everything that follows on this page is that bearing, held.',
+  progEyebrow:'Chapter 02 — The programme', progBearing:'SELECTIVE BY DESIGN',
+  progH2:'Selection is earned.<br><em>Leadership is formed.</em>',
+  progLede:'SAMT is designed for exceptional professionals who demonstrate the character, intellect, judgement, discipline and ambition required to assume future command and senior leadership responsibilities.',
+  progAphorism:'Entry is earned. Development is demanding. Readiness is evidenced.',
+  stat1:'Selected fellows', stat2:'International stations', stat3:'Full-time weeks', stat4:'Command standard',
+  jrEyebrow:'Chapter 03 — The journey',
+  jrH2:'A disciplined path from<br><em>potential to command.</em>',
+  jrLede:'Six bearings, one circle. Every stage raises the standard of judgement, character, exposure and responsibility — until the needle returns to true north, changed.',
+  jr1n:'Potential', jr1d:'Exceptional potential is identified — evidence of character and capability before any title.',
+  jr2n:'Selection', jr2d:'A rigorous and selective admission process. Few enter; every entry is defended by evidence.',
+  jr3n:'Formation', jr3d:'Core capability and leadership judgement are developed under sustained institutional discipline.',
+  jr4n:'Exposure', jr4d:'National and international environments broaden perspective at the furthest point from home.',
+  jr5n:'Transformation', jr5d:'Leadership readiness is measured, strengthened and made visible in decisions under pressure.',
+  jr6n:'Command readiness', jr6d:'Prepared to lead. Ready to command. The standard is met — and independently evidenced.',
+  jrClose:'The circle closes at true north — the same point, a different leader.',
+  selEyebrow:'Chapter 04 — Selection', selBearing:'FOUR GATES, ONE STANDARD',
+  selH2:'A leadership privilege.<br><em>Not a training seat.</em>',
+  selLede:'SAMT selects high-potential professionals through evidence, assessment and independent judgement. Each gate must be passed in order; none may be waived.',
+  gate1num:'Gate 01', gate1h:'Eligibility', gate1p:'Minimum experience and documented performance. The record speaks before the candidate does.',
+  gate2num:'Gate 02', gate2h:'Assessment centre', gate2p:'Analysis, collaboration and decision under pressure — observed, scored and compared against the command standard.',
+  gate3num:'Gate 03', gate3h:'Executive interview', gate3p:'Motivation, humility, judgement and leadership potential — examined by those who carry command themselves.',
+  gate4num:'Gate 04', gate4h:'Independent endorsement', gate4p:'Final decision by a multidisciplinary panel. No single voice admits a fellow; the institution does.',
+  stEyebrow:'Chapter 05 — Preparation stations', stBearing:'ONE ROUTE, FOUR NATIONS, 16 WEEKS',
+  stH2:'Global exposure.<br><em>Strategic perspective.</em>',
+  stLede:'Fellows engage with leading institutions, sectors and operating environments that shape global leadership — beginning at home, returning changed.',
+  stTab1:'UAE', stTab2:'United Kingdom', stTab3:'France', stTab4:'United States',
+  stMetaDur:'Duration', stMetaFocus:'Primary focus',
+  st1role:'Station 01 — National foundation', st1h:'United Arab Emirates',
+  st1p:'A national foundation station connecting leadership formation with the UAE defence, aviation, advanced-technology and sustainability ecosystems — the bearing is set at home before it is tested abroad.',
+  st1dur:'3 weeks', st1focus:'National capability & transformation',
+  st1e1:'Tawazun and national capability governance',
+  st1e2:'EDGE and GAL defence and aviation ecosystems',
+  st1e3:'TII, Masdar, emerging technology and sustainability',
+  st2role:'Station 02 — Command tradition', st2h:'United Kingdom',
+  st2p:'An immersion in one of the world\u2019s deepest command traditions — where leadership doctrine, institutional continuity and a sovereign defence-industrial base have been refined across centuries.',
+  st2dur:'4 weeks', st2focus:'Command doctrine & institutional tradition',
+  st2e1:'Staff-college leadership doctrine and command studies',
+  st2e2:'Sovereign defence-industrial base engagement',
+  st2e3:'London strategic policy and institutional governance',
+  st3role:'Station 03 — Aerospace power', st3h:'France',
+  st3p:'A station inside Europe\u2019s aerospace heartland — where strategic autonomy is doctrine, and combat-air, space and dual-use innovation are built as instruments of sovereignty.',
+  st3dur:'4 weeks', st3focus:'Aerospace power & strategic autonomy',
+  st3e1:'European aerospace and combat-air ecosystems',
+  st3e2:'Strategic-autonomy doctrine and senior defence education',
+  st3e3:'Paris innovation and dual-use technology environment',
+  st4role:'Station 04 — Innovation at scale', st4h:'United States',
+  st4p:'The final station, at maximum range from home — where defence innovation, acquisition at scale and alliance leadership converge, and where each fellow\u2019s bearing is tested hardest before the return.',
+  st4dur:'5 weeks', st4focus:'Innovation at scale & alliance leadership',
+  st4e1:'Defence innovation and acquisition ecosystems',
+  st4e2:'Aerospace primes and advanced-technology engagement',
+  st4e3:'Washington policy, alliance and command institutions',
+  compEyebrow:'Chapter 06 — Leadership maturity', compBearing:'SIX DIMENSIONS OF COMMAND',
+  compH2:'Built for command.<br><em>Trusted to decide.</em>',
+  comp1h:'Strategic judgement', comp1p:'Read context, consequence and long-term institutional direction — and hold the bearing when others drift.',
+  comp2h:'Systems thinking', comp2p:'Understand interdependence across people, capability and mission — no decision moves only one thing.',
+  comp3h:'Decision under complexity', comp3p:'Balance mission, risk, time and incomplete information — and decide when the picture will never be complete.',
+  comp4h:'Institutional leadership', comp4p:'Align strategy, people and governance toward sustained impact that outlasts any single leader.',
+  comp5h:'Innovation & transformation', comp5p:'Convert emerging possibilities into executable institutional change — from producer\u2019s seat, not consumer\u2019s.',
+  comp6h:'International engagement', comp6p:'Build trust, perspective and strategic partnerships across cultures — the UAE\u2019s bearing, understood abroad.',
+  assEyebrow:'Chapter 07 — Assessment & governance', assBearing:'EVIDENCE, DAILY',
+  assH2:'No progression without evidence.<br><em>No execution without governance.</em>',
+  assLede:'Development is measured continuously and governed through clear authority, independent evidence and disciplined decision points. Nothing is assumed; everything is recorded.',
+  ass1num:'Evidence 01', ass1h:'Baseline', ass1p:'A pre-programme capability profile — the fellow\u2019s starting bearing, measured before the first week begins.',
+  ass2num:'Evidence 02', ass2h:'Daily evidence', ass2p:'Tasks, conduct and reflection, captured every day across all sixteen weeks.',
+  ass3num:'Evidence 03', ass3h:'Host assessment', ass3p:'Independent observations from every hosting institution — four nations, one standard.',
+  ass4num:'Evidence 04', ass4h:'Maturity challenge', ass4p:'A decision exercise and executive briefing under pressure, before a senior panel.',
+  ass5num:'Evidence 05', ass5h:'Impact project', ass5p:'An institutional result with follow-through — the programme\u2019s value, delivered and owned.',
+  impEyebrow:'Chapter 08 — Institutional impact', impBearing:'MEASURED AFTER THE RETURN',
+  impH2:'Stronger leadership.<br><em>Stronger institutions.</em>',
+  impLede:'SAMT is measured by what changes after fellows return: better judgement, stronger networks, executable transformation and sustained institutional value.',
+  imp1u:'competencies', imp1h:'Measurable leadership growth', imp1p:'Evidence of progression across all six command-oriented competencies, from baseline to endorsement.',
+  imp2u:'nations', imp2h:'Strategic networks', imp2p:'National and international relationships built with purpose across four hosting environments.',
+  imp3u:'assignments', imp3h:'Transformation delivery', imp3p:'Priority institutional challenges converted into owned, governed delivery plans.',
+  imp4u:'months', imp4h:'Sustained institutional value', imp4p:'Structured follow-up and impact measurement for a full year after the programme ends.',
+  admEyebrow:'Chapter 09 — Admission',
+  admH2:'Selected for potential.<br><em>Shaped for command.</em>',
+  admLede:'Participation is by institutional nomination and a rigorous selection process. Admission is not open enrolment — the circle closes only for those who complete it.',
+  adm1:'Years of practical experience', adm2:'Fellows per cohort', adm3:'Full-time commitment', adm4:'Independent final endorsement',
+  admNote:'Nominations open by institutional invitation',
+  footTag:'From potential to command', footName:'The name', footTop:'Back to true north',
+  footCopy:'\u00a9 2026 SAMT. All rights reserved.',
+  footLegal:'Concept website. Proposed partners and programme arrangements are subject to formal approval and agreement.'
+},
+ar: {
+  _docTitle:'سَمْت — من الإمكانات إلى القيادة',
+  _metaDesc:'«سَمْت» برنامجٌ قيادي انتقائي يرتقي بالإمكانات الاستثنائية نحو الجاهزية للقيادة عبر تكوينٍ منضبط وانفتاحٍ دولي وتقييمٍ قائمٍ على الدليل.',
+  _langBtn:'EN', _dir:'rtl',
+  skip:'تجاوز إلى المحتوى',
+  brand:'سَمْت', brandSub:'للتقدّم الاستراتيجي والإدارة والتحوّل',
+  navProgramme:'البرنامج', navJourney:'الرحلة', navStations:'المحطات',
+  navCompetencies:'الجدارات', navAssessment:'التقييم', navAdmission:'الالتحاق',
+  instStart:'الإمكانات',
+  heroTag:'برنامج قيادي نخبوي',
+  heroH1:'مُعَدّون للقيادة.<br>جاهزون <em>لزمامها.</em>',
+  heroLede:'يتعرّف «سَمْت» على المواهب الاستثنائية، ويُعِدّ نخبةً مُنتقاة لتولّي القيادة المستقبلية والقيادة الاستراتيجية والمسؤولية المؤسسية الأكبر.',
+  heroCta1:'حكاية الاسم', heroCta2:'اكتشف البرنامج',
+  heroRingMean:'الاتجاه المضبوط', scrollCue:'اضبط اتجاهك',
+  nameEyebrow:'الفصل 01 — الاسم', nameBearing:'كلُّ قائدٍ يبدأ باتجاه',
+  nameH2:'قبل البرنامج،<br><em>كلمة.</em>',
+  defn1Term:'العربية الفصحى — اسم',
+  defn1Body:'السَّمْت: نَهْجُ الطريق واتجاهُه المضبوط نحو المقصد. وفي الاستعمال الفصيح أيضًا: حُسْنُ الهيئة والوقار — الطريقة التي يحمل بها القائد نفسه.',
+  defn2Term:'من العربية إلى العالم',
+  defn2Body:'من جمعها «السُّموت» أخذت لغاتُ العالم كلمة Azimuth — الزاوية التي يضبط بها الملّاحون والفلكيون والطيّارون مسارًا دقيقًا. كلمةٌ وُلدت عربيةً، وتوجِّه اليوم كلَّ بوصلةٍ على الأرض.',
+  nameAphorism:'كلُّ قائدٍ يبدأ باتجاه، وكلُّ اتجاهٍ يبدأ بمعنى.',
+  nameClose:'يأخذ «سَمْت» اسمَه بجدّية. فالبرنامج لا يوسّع الإمكانات في كل اتجاه، بل يضبط اتجاهًا واحدًا دقيقًا: القيادة. وكلُّ ما يلي في هذه الصفحة هو ذلك الاتجاه، مثبَّتًا.',
+  progEyebrow:'الفصل 02 — البرنامج', progBearing:'انتقائيٌّ بالتصميم',
+  progH2:'الاصطفاء يُستَحَق.<br><em>والقيادة تُصقَل.</em>',
+  progLede:'صُمِّم «سَمْت» للمهنيين الاستثنائيين الذين يُثبتون ما تتطلّبه القيادة المستقبلية والمسؤوليات العليا من شخصيةٍ وفكرٍ وحُكمٍ وانضباطٍ وطموح.',
+  progAphorism:'الالتحاق استحقاق، والإعداد مُطالِب، والجاهزية تُثبَت بالدليل.',
+  stat1:'زملاء مُنتقَون', stat2:'محطات دولية', stat3:'أسبوعًا بتفرّغ تام', stat4:'معيارٌ قيادي واحد',
+  jrEyebrow:'الفصل 03 — الرحلة',
+  jrH2:'مسارٌ منضبط من<br><em>الإمكانات إلى القيادة.</em>',
+  jrLede:'ستة اتجاهات، دائرةٌ واحدة. كلُّ مرحلةٍ ترفع معيار الحُكم والشخصية والانفتاح والمسؤولية — حتى تعود الإبرة إلى الشمال الحقيقي، وقد تغيّر حاملُها.',
+  jr1n:'الإمكانات', jr1d:'يُستَدَلّ على الإمكانات الاستثنائية — شواهدُ الشخصية والقدرة قبل أي لقب.',
+  jr2n:'الاصطفاء', jr2d:'عملية قبولٍ صارمة وانتقائية. قلّةٌ تدخل، وكلُّ دخولٍ يُدافَع عنه بالدليل.',
+  jr3n:'التكوين', jr3d:'تُبنى القدرات الجوهرية ويُصقل الحُكم القيادي تحت انضباطٍ مؤسسي متواصل.',
+  jr4n:'الانفتاح', jr4d:'بيئاتٌ وطنية ودولية توسّع الأفق عند أبعد نقطةٍ عن الديار.',
+  jr5n:'التحوّل', jr5d:'تُقاس الجاهزية القيادية وتُعزَّز، وتظهر في قراراتٍ تُتَّخذ تحت الضغط.',
+  jr6n:'الجاهزية للقيادة', jr6d:'مُعَدٌّ ليقود، جاهزٌ لزمام القيادة. المعيار مُستوفى — ومُثبَتٌ باستقلالية.',
+  jrClose:'تكتمل الدائرة عند الشمال الحقيقي — النقطة ذاتها، وقائدٌ مختلف.',
+  selEyebrow:'الفصل 04 — الاصطفاء', selBearing:'أربع بوابات، معيارٌ واحد',
+  selH2:'امتيازٌ قيادي.<br><em>لا مقعدٌ تدريبي.</em>',
+  selLede:'يصطفي «سَمْت» أصحاب الإمكانات العالية عبر الدليل والتقييم والحُكم المستقل. تُجتاز البوابات بترتيبها، ولا يُعفى من أيٍّ منها.',
+  gate1num:'البوابة 01', gate1h:'الأهلية', gate1p:'حدٌّ أدنى من الخبرة وأداءٌ موثَّق. السجلُّ يتحدث قبل المرشّح.',
+  gate2num:'البوابة 02', gate2h:'مركز التقييم', gate2p:'تحليلٌ وتعاونٌ وقرارٌ تحت الضغط — يُلاحَظ ويُقيَّم ويُقارَن بمعيار القيادة.',
+  gate3num:'البوابة 03', gate3h:'المقابلة التنفيذية', gate3p:'الدافع والتواضع والحُكم والإمكانات القيادية — يفحصها من حملوا القيادة بأنفسهم.',
+  gate4num:'البوابة 04', gate4h:'التزكية المستقلة', gate4p:'قرارٌ نهائي من لجنةٍ متعددة التخصصات. لا يُدخِل الزميلَ صوتٌ واحد، بل المؤسسة.',
+  stEyebrow:'الفصل 05 — محطات الإعداد', stBearing:'مسارٌ واحد، أربع دول، 16 أسبوعًا',
+  stH2:'انفتاحٌ عالمي.<br><em>وأفقٌ استراتيجي.</em>',
+  stLede:'ينخرط الزملاء مع مؤسساتٍ وقطاعاتٍ وبيئات تشغيلٍ رائدة تصوغ القيادة العالمية — تبدأ الرحلة من الديار، وتعود إليها بقائدٍ قد تبدّل.',
+  stTab1:'الإمارات', stTab2:'المملكة المتحدة', stTab3:'فرنسا', stTab4:'الولايات المتحدة',
+  stMetaDur:'المدة', stMetaFocus:'التركيز الرئيس',
+  st1role:'المحطة 01 — التأسيس الوطني', st1h:'الإمارات العربية المتحدة',
+  st1p:'محطةُ تأسيسٍ وطني تربط التكوين القيادي بمنظومات الدفاع والطيران والتقنيات المتقدمة والاستدامة في دولة الإمارات — يُضبط الاتجاه في الديار قبل أن يُختبر خارجها.',
+  st1dur:'3 أسابيع', st1focus:'القدرات الوطنية والتحوّل',
+  st1e1:'«توازن» وحوكمة القدرات الوطنية',
+  st1e2:'منظومتا «إيدج» و«غال» للدفاع والطيران',
+  st1e3:'«معهد الابتكار التكنولوجي» و«مصدر» والتقنيات الناشئة والاستدامة',
+  st2role:'المحطة 02 — تقاليد القيادة', st2h:'المملكة المتحدة',
+  st2p:'انغماسٌ في واحدٍ من أعرق تقاليد القيادة في العالم — حيث صُقلت عقيدة القيادة والاستمرارية المؤسسية والقاعدة الدفاعية-الصناعية السيادية عبر قرون.',
+  st2dur:'4 أسابيع', st2focus:'عقيدة القيادة والتقاليد المؤسسية',
+  st2e1:'عقيدة القيادة ودراسات الإمرة في كليات الأركان',
+  st2e2:'الانخراط مع القاعدة الدفاعية-الصناعية السيادية',
+  st2e3:'مؤسسات السياسة الاستراتيجية والحوكمة في لندن',
+  st3role:'المحطة 03 — القوة الجوية-الفضائية', st3h:'فرنسا',
+  st3p:'محطةٌ في قلب أوروبا الجوي-الفضائي — حيث الاستقلالية الاستراتيجية عقيدة، ويُبنى الطيران القتالي والفضاء والابتكار مزدوج الاستخدام أدواتٍ للسيادة.',
+  st3dur:'4 أسابيع', st3focus:'القوة الجوية-الفضائية والاستقلالية الاستراتيجية',
+  st3e1:'منظومات الطيران والفضاء والطيران القتالي الأوروبية',
+  st3e2:'عقيدة الاستقلالية الاستراتيجية والتعليم الدفاعي العالي',
+  st3e3:'بيئة باريس للابتكار والتقنيات مزدوجة الاستخدام',
+  st4role:'المحطة 04 — الابتكار واسع النطاق', st4h:'الولايات المتحدة',
+  st4p:'المحطة الأخيرة، عند أقصى مدًى من الديار — حيث يلتقي الابتكار الدفاعي والاستحواذ واسع النطاق وقيادة التحالفات، وحيث يُختبر اتجاه كلِّ زميلٍ أشدَّ اختبارٍ قبل العودة.',
+  st4dur:'5 أسابيع', st4focus:'الابتكار واسع النطاق وقيادة التحالفات',
+  st4e1:'منظومات الابتكار الدفاعي والاستحواذ',
+  st4e2:'الانخراط مع كبريات شركات الطيران والفضاء والتقنيات المتقدمة',
+  st4e3:'مؤسسات السياسة والتحالفات والقيادة في واشنطن',
+  compEyebrow:'الفصل 06 — النضج القيادي', compBearing:'ستة أبعادٍ للقيادة',
+  compH2:'صُقِلوا للقيادة.<br><em>واؤتُمِنوا على القرار.</em>',
+  comp1h:'الحُكم الاستراتيجي', comp1p:'قراءةُ السياق والعواقب والاتجاه المؤسسي بعيد المدى — وتثبيتُ الاتجاه حين ينحرف الآخرون.',
+  comp2h:'التفكير المنظومي', comp2p:'فهمُ الترابط بين الأفراد والقدرة والمهمة — فما من قرارٍ يحرّك شيئًا واحدًا فقط.',
+  comp3h:'القرار في بيئة التعقيد', comp3p:'الموازنة بين المهمة والمخاطر والوقت والمعلومات الناقصة — والحسمُ حين لا تكتمل الصورة أبدًا.',
+  comp4h:'القيادة المؤسسية', comp4p:'مواءمةُ الاستراتيجية والأفراد والحوكمة نحو أثرٍ مستدام يتجاوز أيَّ قائدٍ بمفرده.',
+  comp5h:'الابتكار والتحوّل', comp5p:'تحويلُ الممكنات الناشئة إلى تغييرٍ مؤسسي قابلٍ للتنفيذ — من مقعد المنتِج لا المستهلِك.',
+  comp6h:'الانخراط الدولي', comp6p:'بناءُ الثقة والأفق والشراكات الاستراتيجية عبر الثقافات — اتجاهُ الإمارات، مفهومًا لدى العالم.',
+  assEyebrow:'الفصل 07 — التقييم والحوكمة', assBearing:'دليلٌ يومي',
+  assH2:'لا تقدُّمَ دون دليل.<br><em>ولا تنفيذَ دون حوكمة.</em>',
+  assLede:'يُقاس التطوّر باستمرار ويُحكَم عبر صلاحيةٍ واضحة ودليلٍ مستقل ونقاط قرارٍ منضبطة. لا شيء يُفترَض؛ وكلُّ شيءٍ يُوثَّق.',
+  ass1num:'الدليل 01', ass1h:'خط الأساس', ass1p:'ملفُّ قدراتٍ قبل البرنامج — اتجاهُ الزميل عند الانطلاق، مقيسًا قبل الأسبوع الأول.',
+  ass2num:'الدليل 02', ass2h:'الدليل اليومي', ass2p:'مهامُّ وسلوكٌ وتأمّل، تُوثَّق يوميًّا على امتداد الأسابيع الستة عشر.',
+  ass3num:'الدليل 03', ass3h:'تقييم الجهة المضيفة', ass3p:'ملاحظاتٌ مستقلة من كل مؤسسةٍ مضيفة — أربع دول، ومعيارٌ واحد.',
+  ass4num:'الدليل 04', ass4h:'تحدّي النضج', ass4p:'تمرينُ قرارٍ وإحاطةٌ تنفيذية تحت الضغط، أمام لجنةٍ عليا.',
+  ass5num:'الدليل 05', ass5h:'مشروع الأثر', ass5p:'نتيجةٌ مؤسسية بمتابعةٍ والتزام — قيمةُ البرنامج، مُسلَّمةً ومملوكة.',
+  impEyebrow:'الفصل 08 — الأثر المؤسسي', impBearing:'يُقاس بعد العودة',
+  impH2:'قيادةٌ أرسخ.<br><em>ومؤسساتٌ أقوى.</em>',
+  impLede:'يُقاس «سَمْت» بما يتغيّر بعد عودة الزملاء: حُكمٌ أنضج، وشبكاتٌ أمتن، وتحوّلٌ قابلٌ للتنفيذ، وقيمةٌ مؤسسية مستدامة.',
+  imp1u:'جدارات', imp1h:'نموٌّ قيادي قابل للقياس', imp1p:'دليلُ تقدّمٍ عبر الجدارات القيادية الست، من خط الأساس حتى التزكية.',
+  imp2u:'دول', imp2h:'شبكاتٌ استراتيجية', imp2p:'علاقاتٌ وطنية ودولية تُبنى بقصدٍ عبر أربع بيئاتٍ مضيفة.',
+  imp3u:'تكليفات', imp3h:'تسليم التحوّل', imp3p:'تحدياتٌ مؤسسية ذات أولوية تتحوّل إلى خطط تنفيذٍ مملوكة ومحكومة.',
+  imp4u:'شهرًا', imp4h:'قيمةٌ مؤسسية مستدامة', imp4p:'متابعةٌ منظّمة وقياسُ أثرٍ لعامٍ كامل بعد انتهاء البرنامج.',
+  admEyebrow:'الفصل 09 — الالتحاق',
+  admH2:'اصطُفوا لإمكاناتهم.<br><em>وصُقِلوا للقيادة.</em>',
+  admLede:'المشاركة بترشيحٍ مؤسسي وعمليةِ اصطفاءٍ صارمة. الالتحاق ليس تسجيلًا مفتوحًا — والدائرة لا تكتمل إلا لمن أتمّها.',
+  adm1:'سنواتُ خبرةٍ عملية', adm2:'زملاء في كل دفعة', adm3:'التزامٌ بتفرّغ تام', adm4:'تزكيةٌ نهائية مستقلة',
+  admNote:'الترشيح بدعوةٍ مؤسسية',
+  footTag:'من الإمكانات إلى القيادة', footName:'الاسم', footTop:'العودة إلى الشمال الحقيقي',
+  footCopy:'© 2026 سَمْت. جميع الحقوق محفوظة.',
+  footLegal:'موقعٌ تصوّري. الشركاء المقترحون وترتيبات البرنامج خاضعون للاعتماد والاتفاق الرسميين.'
+}
+};
+
+/* ═══════════ instrument section labels ═══════════ */
+var INST = {
+  hero:{en:'Potential',ar:'الإمكانات'},
+  name:{en:'The name',ar:'الاسم'},
+  programme:{en:'Programme',ar:'البرنامج'},
+  journey:{en:'Journey',ar:'الرحلة'},
+  selection:{en:'Selection',ar:'الاصطفاء'},
+  stations:{en:'Stations',ar:'المحطات'},
+  competencies:{en:'Competencies',ar:'الجدارات'},
+  assessment:{en:'Assessment',ar:'التقييم'},
+  impact:{en:'Impact',ar:'الأثر'},
+  admission:{en:'Command',ar:'القيادة'}
+};
+var SECTION_IDS = ['hero','name','programme','journey','selection','stations','competencies','assessment','impact','admission'];
+var lang = 'en'; /* in-memory only — no storage APIs */
+var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function qs(s,c){return (c||doc).querySelector(s)}
+function qsa(s,c){return Array.prototype.slice.call((c||doc).querySelectorAll(s))}
+
+/* ═══════════ language toggle ═══════════ */
+function applyLang(next){
+  lang = next;
+  var d = I18N[lang];
+  root.setAttribute('lang', lang);
+  root.setAttribute('dir', d._dir);
+  doc.title = d._docTitle;
+  var md = qs('meta[name="description"]');
+  if(md) md.setAttribute('content', d._metaDesc);
+  qsa('[data-i18n]').forEach(function(el){
+    var k = el.getAttribute('data-i18n');
+    if(d[k] !== undefined) el.textContent = d[k];
+  });
+  qsa('[data-i18n-html]').forEach(function(el){
+    var k = el.getAttribute('data-i18n-html');
+    if(d[k] !== undefined) el.innerHTML = d[k];
+  });
+  var lb = qs('#langBtnTxt'); if(lb) lb.innerHTML = d._langBtn;
+  updateFrame();
+}
+var langBtn = qs('#langBtn');
+if(langBtn) langBtn.addEventListener('click', function(){ applyLang(lang === 'en' ? 'ar' : 'en'); });
+
+/* ═══════════ azimuth tick builders ═══════════ */
+var SVGNS = 'http://www.w3.org/2000/svg';
+function buildTicks(groupId, cx, cy, rOuter, stepDeg, majorEvery, lenMajor, lenMinor, color, colorMajor){
+  var g = doc.getElementById(groupId);
+  if(!g) return;
+  for(var a = 0; a < 360; a += stepDeg){
+    var major = (a % majorEvery) === 0;
+    var len = major ? lenMajor : lenMinor;
+    var t = doc.createElementNS(SVGNS,'line');
+    var rad = (a - 90) * Math.PI / 180;
+    var x1 = cx + Math.cos(rad) * rOuter, y1 = cy + Math.sin(rad) * rOuter;
+    var x2 = cx + Math.cos(rad) * (rOuter - len), y2 = cy + Math.sin(rad) * (rOuter - len);
+    t.setAttribute('x1',x1.toFixed(2)); t.setAttribute('y1',y1.toFixed(2));
+    t.setAttribute('x2',x2.toFixed(2)); t.setAttribute('y2',y2.toFixed(2));
+    t.setAttribute('stroke', major ? colorMajor : color);
+    t.setAttribute('stroke-width', major ? '1.4' : '1');
+    g.appendChild(t);
+  }
+}
+buildTicks('heroRotor', 200, 200, 192, 5, 30, 16, 7, '#1B2B41', '#8F7430');
+buildTicks('miniRotor', 20, 20, 17.5, 15, 90, 5, 3, '#22354D', '#8F7430');
+
+/* ═══════════ scroll frame: rotation, readout, nav, active link ═══════════ */
+var heroRotor = doc.getElementById('heroRotor');
+var miniRotor = doc.getElementById('miniRotor');
+var instEl = qs('#instrument');
+var instDeg = qs('#instDeg');
+var instLabel = qs('#instLabel');
+var navEl = qs('#nav');
+var navLinks = qsa('.nav-links a');
+var ticking = false;
+
+function fmtDeg(d){
+  var s = d.toFixed(1);
+  while(s.length < 5) s = '0' + s;
+  return s + '\u00b0';
+}
+function currentSection(){
+  var cur = SECTION_IDS[0];
+  for(var i = 0; i < SECTION_IDS.length; i++){
+    var el = doc.getElementById(SECTION_IDS[i]);
+    if(el && el.getBoundingClientRect().top <= window.innerHeight * 0.45) cur = SECTION_IDS[i];
+  }
+  return cur;
+}
+function updateFrame(){
+  ticking = false;
+  var st = window.pageYOffset || root.scrollTop || 0;
+  var max = root.scrollHeight - window.innerHeight;
+  var p = max > 0 ? Math.min(1, Math.max(0, st / max)) : 0;
+  var deg = p * 360;
+  if(!reduced){
+    if(heroRotor) heroRotor.setAttribute('transform', 'rotate(' + (deg * -1).toFixed(2) + ' 200 200)');
+    if(miniRotor) miniRotor.setAttribute('transform', 'rotate(' + (deg * -1).toFixed(2) + ' 20 20)');
+  }
+  if(instDeg) instDeg.textContent = fmtDeg(deg);
+  var cur = currentSection();
+  if(instLabel && INST[cur]) instLabel.textContent = INST[cur][lang];
+  if(instEl) instEl.classList.toggle('on', st > 240 && p < 0.985);
+  if(navEl) navEl.classList.toggle('scrolled', st > 10);
+  navLinks.forEach(function(a){
+    a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+  });
+}
+function onScroll(){
+  if(!ticking){ ticking = true; requestAnimationFrame(updateFrame); }
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+window.addEventListener('resize', onScroll, {passive:true});
+
+/* ═══════════ counters ═══════════ */
+function runCounters(scope, instant){
+  qsa('.count', scope).forEach(function(el){
+    if(el.getAttribute('data-done')) return;
+    el.setAttribute('data-done','1');
+    var end = parseInt(el.getAttribute('data-count'), 10) || 0;
+    if(instant || reduced){ el.textContent = String(end); return; }
+    var t0 = null, dur = 1100;
+    function step(ts){
+      if(!t0) t0 = ts;
+      var k = Math.min(1, (ts - t0) / dur);
+      var e = 1 - Math.pow(1 - k, 3);
+      el.textContent = String(Math.round(end * e));
+      if(k < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+}
+
+/* ═══════════ reveals (IO + iPhone-safe fallback) ═══════════ */
+function markIn(el){
+  el.classList.add('in');
+  runCounters(el, false);
+  qsa('.ring-close', el).forEach(function(r){ r.classList.add('closed'); });
+}
+var revealEls = qsa('.reveal');
+if('IntersectionObserver' in window){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ markIn(en.target); io.unobserve(en.target); }
+    });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+  revealEls.forEach(function(el){ io.observe(el); });
+} else {
+  revealEls.forEach(markIn);
+}
+/* safety net: nothing may remain hidden if observers misbehave */
+window.setTimeout(function(){
+  revealEls.forEach(function(el){
+    if(!el.classList.contains('in')){
+      el.classList.add('in');
+      runCounters(el, true);
+      qsa('.ring-close', el).forEach(function(r){ r.classList.add('closed'); });
+    }
+  });
+}, 4000);
+
+/* ═══════════ station tabs ═══════════ */
+var tabs = qsa('.st-tab');
+var panelFor = function(tab){ return doc.getElementById(tab.getAttribute('aria-controls')); };
+function selectTab(idx){
+  tabs.forEach(function(t, i){
+    var on = i === idx;
+    t.setAttribute('aria-selected', on ? 'true' : 'false');
+    t.setAttribute('tabindex', on ? '0' : '-1');
+    var p = panelFor(t);
+    if(!p) return;
+    if(on){
+      p.hidden = false;
+      p.classList.add('show');
+      qsa('.reveal', p).forEach(markIn);
+    } else {
+      p.hidden = true;
+      p.classList.remove('show');
+    }
+  });
+}
+tabs.forEach(function(t, i){
+  t.addEventListener('click', function(){ selectTab(i); });
+  t.addEventListener('keydown', function(ev){
+    var k = ev.key, n = null;
+    if(k === 'ArrowRight' || k === 'ArrowDown') n = (i + 1) % tabs.length;
+    if(k === 'ArrowLeft' || k === 'ArrowUp') n = (i - 1 + tabs.length) % tabs.length;
+    if(k === 'Home') n = 0;
+    if(k === 'End') n = tabs.length - 1;
+    if(n !== null){ ev.preventDefault(); selectTab(n); tabs[n].focus(); }
+  });
+});
+selectTab(0);
+
+/* ═══════════ mobile menu ═══════════ */
+var burger = qs('#burger');
+var menu = qs('#mobileMenu');
+function setMenu(open){
+  if(!burger || !menu) return;
+  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  menu.classList.toggle('open', open);
+  doc.body.classList.toggle('menu-lock', open);
+}
+if(burger){
+  burger.addEventListener('click', function(){
+    setMenu(burger.getAttribute('aria-expanded') !== 'true');
+  });
+}
+if(menu){
+  qsa('a', menu).forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+}
+doc.addEventListener('keydown', function(ev){ if(ev.key === 'Escape') setMenu(false); });
+
+/* first paint */
+updateFrame();
+})();
+</script>
+</body>
+</html>
