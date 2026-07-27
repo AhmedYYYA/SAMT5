@@ -455,7 +455,7 @@ body.intro-lock{overflow:hidden}
 @keyframes introFade{to{opacity:1}}
 @media (prefers-reduced-motion:reduce){.intro{display:none}.hero-needle,.intro-needle{animation:none}html.js .hl-in{transform:none!important}}
 /* ═══ atmosphere: canvas, marquee, kinetic type, log, cursor ═══ */
-.atmo{position:fixed;inset:0;z-index:0;pointer-events:none}
+.atmo{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0;pointer-events:none}
 html.gl .halo{display:none}
 .marquee{overflow:hidden;border-block:1px solid var(--line);padding-block:clamp(18px,3vh,30px);position:relative;z-index:1;background:#050D18B0}
 .mq-track{display:flex;align-items:center;white-space:nowrap;width:max-content;will-change:transform}
@@ -466,11 +466,11 @@ html.gl .halo{display:none}
 .mq-dot{color:var(--gold-deep);font-size:12px}
 .kin .wrap{display:flex;flex-direction:column}
 .kin{padding-block:clamp(120px,20vh,230px);overflow:hidden}
-.kin-line{font-family:var(--font-display);font-weight:400;font-size:clamp(50px,10.5vw,148px);line-height:1.06;color:var(--bone);display:block;width:max-content;max-width:100%;will-change:transform;text-wrap:balance}
+.kin-line{font-family:var(--font-display);font-weight:400;font-size:clamp(48px,10vw,134px);line-height:1.06;color:var(--bone);display:block;width:max-content;max-width:100%;will-change:transform;white-space:nowrap}
 html[lang="ar"] .kin-line{line-height:1.3}
 .kin-line:nth-child(2){margin-inline-start:10%;color:var(--champagne)}
 .kin-line:nth-child(3){margin-inline-start:3%}
-.kin-line:nth-child(4){margin-inline-start:18%;color:var(--champagne)}
+.kin-line:nth-child(4){margin-inline-start:14%;color:var(--champagne)}
 html.js .kin .w{display:inline-block;overflow:hidden;vertical-align:top}
 html.js .kin .w i{display:inline-block;font-style:normal;transform:translateY(118%);transition:transform .95s var(--ease);transition-delay:calc(var(--i)*90ms)}
 html.js .kin.in .w i{transform:none}
@@ -503,8 +503,16 @@ html.cursor-hover .cursor-ring{width:60px;height:60px;border-color:var(--gold);t
 #hero::after{background-image:url('bg-chart.svg');background-position:center right;background-size:cover;opacity:.5}
 html[dir="rtl"] #hero::after{background-position:center left}
 #journey::after{background-image:url('bg-contour.svg');background-position:left bottom;background-size:cover;opacity:.42}
-#stations::after{background-image:url('bg-route.svg');background-position:center bottom;background-size:100% auto;opacity:.5}
+#stations::after{background-image:url('bg-route.svg');background-position:center bottom;background-size:100% auto;opacity:.34}
 .admission::after{background-image:url('bg-seal.svg');background-position:center 42%;background-size:min(640px,82vw) auto;opacity:.5}
 .samt-mark{display:block;width:2.25em;height:auto;margin-inline:auto}
 .big-ar .samt-mark{margin-inline:0}
 @media (max-width:640px){#hero::after{opacity:.32}.admission::after{opacity:.4}}
+
+
+/* ═══ cinematic plates — treated renders beneath the engraved layer ═══ */
+#journey::after{background-image:url('bg-contour.svg'),url('art-journey.jpg');background-position:left bottom,center 68%;background-size:cover,cover;opacity:.8}
+.admission::after{background-image:url('bg-seal.svg'),url('art-ring.jpg');background-position:center 42%,center 32%;background-size:min(640px,82vw) auto,cover;opacity:.78}
+.kin::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:url('art-network.jpg') center 62%/cover no-repeat;opacity:.72}
+#competencies::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:url('art-formation.jpg') right center/cover no-repeat;opacity:.45}
+@media (max-width:640px){#competencies::after{display:none}.kin::after{opacity:.5}}
