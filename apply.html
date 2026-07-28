@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAMT — Nomination Form</title>
+<meta name="description" content="SAMT fellowship nomination form. Structured application designed for rigorous, machine-assisted review.">
+<meta name="theme-color" content="#030A12">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="noindex,follow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='16.5' fill='none' stroke='%23C3A24A' stroke-width='2.4'/%3E%3Cpath d='M20 10.5l6.8 16.3L20 22.7l-6.8 4.1Z' fill='%23C3A24A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ═══ nomination form — page layer on top of the azimuth system ═══ */
+.apply-main{position:relative;z-index:1;max-width:980px;margin-inline:auto;padding:130px var(--pad-x) 90px}
+.apply-head{display:grid;gap:18px;margin-bottom:40px}
+.apply-head .h2{max-width:20ch}
+.apply-intro{color:var(--slate);max-width:64ch}
+
+.progress-row{display:flex;align-items:center;gap:18px;margin:34px 0 26px;flex-wrap:wrap}
+.progress-label{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--champagne);font-variant-numeric:tabular-nums;white-space:nowrap}
+html[lang="ar"] .progress-label{font-family:var(--font-body);letter-spacing:0;font-size:13px}
+.progress-track{flex:1;min-width:220px;height:3px;background:var(--line);border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--gold-deep),var(--gold));transition:width .6s var(--ease)}
+
+.pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:44px}
+.pill{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid var(--line);color:var(--slate);padding:10px 16px;border-radius:999px;
+  transition:color .3s,border-color .3s,background .3s;display:flex;align-items:center;gap:8px;
+}
+html[lang="ar"] .pill{font-family:var(--font-body);letter-spacing:0;font-size:13px}
+.pill:hover{color:var(--champagne);border-color:var(--gold-deep)}
+.pill[aria-selected="true"]{background:var(--gold);border-color:var(--gold);color:var(--night)}
+.pill .dot{width:6px;height:6px;border-radius:50%;border:1px solid currentColor;flex:none}
+.pill.done .dot{background:var(--gold);border-color:var(--gold)}
+.pill[aria-selected="true"].done .dot{background:var(--night);border-color:var(--night)}
+
+.sec{display:none}
+.sec.show{display:block;animation:panelIn .5s var(--ease)}
+.sec-head{display:grid;gap:8px;margin-bottom:26px}
+.sec-head h2{font-family:var(--font-display);font-weight:400;font-size:clamp(24px,3vw,32px);color:var(--bone)}
+.sec-head p{color:var(--slate);font-size:14.5px;max-width:64ch}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.field label{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--slate)}
+html[lang="ar"] .field label{font-family:var(--font-body);letter-spacing:0;font-size:12.5px}
+.field label .req{color:var(--gold)}
+.field input,.field select,.field textarea{
+  background:var(--ink);border:1px solid var(--line);color:var(--bone);
+  font-family:var(--font-body);font-size:15px;padding:13px 14px;border-radius:3px;
+  transition:border-color .3s;width:100%;
+}
+.field textarea{resize:vertical;min-height:110px;line-height:1.6}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold-deep)}
+.field input.invalid,.field select.invalid,.field textarea.invalid{border-color:#8f4030}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2397A6B8' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:calc(100% - 14px) center}
+html[dir="rtl"] .field select{background-position:14px center}
+.hint{font-size:12px;color:var(--slate-dim)}
+.count{font-family:var(--font-mono);font-size:10.5px;color:var(--slate-dim);align-self:flex-end;font-variant-numeric:tabular-nums}
+.check{display:flex;gap:12px;align-items:flex-start;margin:14px 0}
+.check input{width:17px;height:17px;accent-color:#C3A24A;margin-top:3px;flex:none}
+.check span{color:var(--bone-dim);font-size:14.5px;line-height:1.6}
+
+.block{border:1px solid var(--line);background:#0A162699;border-radius:3px;padding:22px;margin-bottom:16px;position:relative}
+.block-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.block-num{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.22em;color:var(--gold)}
+html[lang="ar"] .block-num{font-family:var(--font-body);letter-spacing:0;font-size:12px}
+.block-remove{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:var(--slate-dim);border:1px solid var(--line);padding:6px 12px;border-radius:2px;transition:color .3s,border-color .3s}
+html[lang="ar"] .block-remove{font-family:var(--font-body);letter-spacing:0;font-size:12px}
+.block-remove:hover{color:#d08a7a;border-color:#8f4030}
+.add-btn{
+  display:inline-flex;align-items:center;gap:10px;border:1px dashed var(--line);
+  color:var(--slate);font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  padding:12px 20px;border-radius:3px;transition:color .3s,border-color .3s;margin-top:4px;
+}
+html[lang="ar"] .add-btn{font-family:var(--font-body);letter-spacing:0;font-size:13px}
+.add-btn:hover{color:var(--champagne);border-color:var(--gold-deep)}
+.add-btn[disabled]{opacity:.35;pointer-events:none}
+
+.sec-nav{display:flex;justify-content:space-between;gap:14px;margin-top:34px;border-top:1px solid var(--line);padding-top:26px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:44px;border-top:1px solid var(--line);padding-top:30px;align-items:center}
+.actions .spacer{flex:1}
+
+.review{display:none;border:1px solid var(--gold-deep);background:#0A1626;border-radius:3px;padding:28px;margin-top:36px}
+.review.show{display:block;animation:panelIn .5s var(--ease)}
+.review h3{font-family:var(--font-display);font-weight:400;font-size:22px;color:var(--champagne);margin-bottom:6px}
+.review .rid{font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;color:var(--gold);margin-bottom:16px}
+.review p{color:var(--slate);font-size:14px;margin-bottom:16px;max-width:66ch}
+.review .r-actions{display:flex;flex-wrap:wrap;gap:10px}
+.err{display:none;color:#d08a7a;font-size:13.5px;margin-top:16px}
+.err.show{display:block}
+.json-note{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;color:var(--slate-dim);margin-top:22px;text-transform:uppercase}
+html[lang="ar"] .json-note{font-family:var(--font-body);letter-spacing:0;font-size:12px;text-transform:none}
+
+@media (max-width:760px){
+  .grid2,.grid3{grid-template-columns:1fr}
+  .apply-main{padding-top:110px}
+  .sec-nav,.actions{flex-direction:column;align-items:stretch}
+  .actions .spacer{display:none}
+}
+</style>
+</head>
+<body>
+<div class="graticule" aria-hidden="true"></div>
+<div class="halo" aria-hidden="true"></div>
+<a class="skip" href="#main" data-i18n="p_skip">Skip to content</a>
+
+<header class="nav scrolled">
+  <div class="nav-in">
+    <a class="brand" href="index.html" aria-label="SAMT — home">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M20 3v6M20 31v6M3 20h6M31 20h6" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M20 11l6.5 15.5L20 22.6 13.5 26.5Z" fill="currentColor"/>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name" data-i18n="p_brand">SAMT</span>
+        <span class="brand-sub" data-i18n="p_brandSub">Nomination form</span>
+      </span>
+    </a>
+    <div class="nav-actions">
+      <a class="lang-btn" href="index.html" data-i18n="p_back">← Site</a>
+      <button class="lang-btn" id="langBtn" aria-label="Switch language / تبديل اللغة"><span id="langBtnTxt"><span class="ar-glyph">ع</span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="apply-main" id="main">
+  <div class="apply-head">
+    <p class="eyebrow" data-i18n="p_eyebrow">Cohort 01 — Nomination</p>
+    <h1 class="display h2" data-i18n="p_title">The application is the first assessment.</h1>
+    <p class="apply-intro" data-i18n="p_intro">Complete all sections with precision. Submissions are reviewed through a structured, machine-assisted process — clear, specific and evidenced answers carry more weight than long ones.</p>
+  </div>
+
+  <div class="progress-row">
+    <span class="progress-label"><span id="pct">0</span>% <span data-i18n="p_completed">profile completed</span></span>
+    <div class="progress-track"><div class="progress-fill" id="fill"></div></div>
+  </div>
+
+  <div class="pills" role="tablist" aria-label="Sections" id="pills">
+    <button class="pill" role="tab" data-sec="g" aria-selected="true"><span class="dot"></span><span data-i18n="p_secG">General information</span></button>
+    <button class="pill" role="tab" data-sec="id" aria-selected="false"><span class="dot"></span><span data-i18n="p_secId">Identity</span></button>
+    <button class="pill" role="tab" data-sec="xp" aria-selected="false"><span class="dot"></span><span data-i18n="p_secXp">Professional experience</span></button>
+    <button class="pill" role="tab" data-sec="ed" aria-selected="false"><span class="dot"></span><span data-i18n="p_secEd">Education</span></button>
+    <button class="pill" role="tab" data-sec="tr" aria-selected="false"><span class="dot"></span><span data-i18n="p_secTr">Training courses</span></button>
+    <button class="pill" role="tab" data-sec="ac" aria-selected="false"><span class="dot"></span><span data-i18n="p_secAc">Achievements</span></button>
+    <button class="pill" role="tab" data-sec="pr" aria-selected="false"><span class="dot"></span><span data-i18n="p_secPr">Preferences</span></button>
+    <button class="pill" role="tab" data-sec="sk" aria-selected="false"><span class="dot"></span><span data-i18n="p_secSk">Skills &amp; hobbies</span></button>
+  </div>
+
+  <!-- ── General information ── -->
+  <section class="sec show" id="sec-g">
+    <div class="sec-head"><h2 data-i18n="p_secG">General information</h2><p data-i18n="p_gIntro">Core contact and service details, exactly as they appear in official records.</p></div>
+    <div class="grid2">
+      <div class="field"><label data-i18n-html="p_fNameEn">Full name — English <span class="req">*</span></label><input data-f="full_name_en" data-req autocomplete="name"></div>
+      <div class="field"><label data-i18n-html="p_fNameAr">Full name — Arabic <span class="req">*</span></label><input data-f="full_name_ar" data-req dir="rtl" lang="ar"></div>
+      <div class="field"><label data-i18n-html="p_fDob">Date of birth <span class="req">*</span></label><input type="date" data-f="date_of_birth" data-req></div>
+      <div class="field"><label data-i18n-html="p_fNat">Nationality <span class="req">*</span></label><input data-f="nationality" data-req></div>
+      <div class="field"><label data-i18n-html="p_fCity">Emirate / city of residence <span class="req">*</span></label><input data-f="city" data-req></div>
+      <div class="field"><label data-i18n-html="p_fEmail">Email <span class="req">*</span></label><input type="email" data-f="email" data-req autocomplete="email"></div>
+      <div class="field"><label data-i18n-html="p_fPhone">Mobile number <span class="req">*</span></label><input type="tel" data-f="phone" data-req dir="ltr" autocomplete="tel" placeholder="+971 5x xxx xxxx"></div>
+      <div class="field"><label data-i18n-html="p_fEmployer">Current employer / unit <span class="req">*</span></label><input data-f="employer" data-req></div>
+      <div class="field"><label data-i18n-html="p_fRole">Current role / rank <span class="req">*</span></label><input data-f="current_role" data-req></div>
+      <div class="field"><label data-i18n-html="p_fYears">Total years of experience <span class="req">*</span></label><input type="number" min="0" max="45" step="0.5" data-f="years_experience" data-req dir="ltr"></div>
+    </div>
+  </section>
+
+  <!-- ── Identity ── -->
+  <section class="sec" id="sec-id">
+    <div class="sec-head"><h2 data-i18n="p_secId">Identity</h2><p data-i18n="p_idIntro">Identity details are used only for verification during shortlisting.</p></div>
+    <div class="grid2">
+      <div class="field"><label data-i18n-html="p_fUae">UAE national <span class="req">*</span></label>
+        <select data-f="uae_national" data-req>
+          <option value="" data-i18n="p_optSelect">Select…</option>
+          <option value="yes" data-i18n="p_optYes">Yes</option>
+          <option value="no" data-i18n="p_optNo">No</option>
+        </select></div>
+      <div class="field"><label data-i18n="p_fGender">Gender</label>
+        <select data-f="gender">
+          <option value="" data-i18n="p_optSelect">Select…</option>
+          <option value="male" data-i18n="p_optMale">Male</option>
+          <option value="female" data-i18n="p_optFemale">Female</option>
+        </select></div>
+      <div class="field"><label data-i18n="p_fEid">Emirates ID (optional)</label><input data-f="emirates_id" dir="ltr" inputmode="numeric" placeholder="784-XXXX-XXXXXXX-X"></div>
+      <div class="field"><label data-i18n-html="p_fLangs">Languages spoken <span class="req">*</span></label><input data-f="languages" data-req data-i18n-ph="p_phLangs" placeholder="Arabic, English"></div>
+    </div>
+  </section>
+
+  <!-- ── Professional experience ── -->
+  <section class="sec" id="sec-xp">
+    <div class="sec-head"><h2 data-i18n="p_secXp">Professional experience</h2><p data-i18n="p_xpIntro">Provide your career history — minimum 1 and maximum 3 positions, most recent first.</p></div>
+    <div id="xpList"></div>
+    <button class="add-btn" id="xpAdd" type="button"><span>+</span><span data-i18n="p_xpAdd">Add position</span></button>
+  </section>
+
+  <!-- ── Education ── -->
+  <section class="sec" id="sec-ed">
+    <div class="sec-head"><h2 data-i18n="p_secEd">Education</h2><p data-i18n="p_edIntro">Formal qualifications — minimum 1 and maximum 3, highest first.</p></div>
+    <div id="edList"></div>
+    <button class="add-btn" id="edAdd" type="button"><span>+</span><span data-i18n="p_edAdd">Add qualification</span></button>
+  </section>
+
+  <!-- ── Training ── -->
+  <section class="sec" id="sec-tr">
+    <div class="sec-head"><h2 data-i18n="p_secTr">Training courses</h2><p data-i18n="p_trIntro">Relevant professional courses — up to 5. Leadership, strategy and technical programmes carry most weight.</p></div>
+    <div id="trList"></div>
+    <button class="add-btn" id="trAdd" type="button"><span>+</span><span data-i18n="p_trAdd">Add course</span></button>
+  </section>
+
+  <!-- ── Achievements ── -->
+  <section class="sec" id="sec-ac">
+    <div class="sec-head"><h2 data-i18n="p_secAc">Achievements</h2><p data-i18n="p_acIntro">Up to 3 achievements with measurable institutional impact. State the result, not the effort.</p></div>
+    <div id="acList"></div>
+    <button class="add-btn" id="acAdd" type="button"><span>+</span><span data-i18n="p_acAdd">Add achievement</span></button>
+  </section>
+
+  <!-- ── Preferences ── -->
+  <section class="sec" id="sec-pr">
+    <div class="sec-head"><h2 data-i18n="p_secPr">Preferences</h2><p data-i18n="p_prIntro">Your motivation and commitments. Free-text answers are deliberately limited — precision is part of the assessment.</p></div>
+    <div class="field"><label data-i18n-html="p_fMotivation">Motivation statement <span class="req">*</span></label>
+      <textarea data-f="motivation" data-req maxlength="600" data-countmax="600"></textarea>
+      <span class="count" data-countfor="motivation">0 / 600</span>
+      <span class="hint" data-i18n="p_hMotivation">Why command, why now, and why you — in no more than 600 characters.</span></div>
+    <div class="field"><label data-i18n="p_fPhilosophy">Leadership philosophy — one line</label>
+      <input data-f="philosophy" maxlength="140" data-countmax="140">
+      <span class="count" data-countfor="philosophy">0 / 140</span></div>
+    <div class="grid2">
+      <div class="field"><label data-i18n="p_fStation">Station of highest interest</label>
+        <select data-f="station_interest">
+          <option value="" data-i18n="p_optSelect">Select…</option>
+          <option value="uae" data-i18n="p_optUae">UAE — national capability</option>
+          <option value="uk" data-i18n="p_optUk">UK — leadership &amp; discipline</option>
+          <option value="fr" data-i18n="p_optFr">France — strategy &amp; partnerships</option>
+          <option value="us" data-i18n="p_optUs">USA — cooperation &amp; acquisition</option>
+        </select></div>
+      <div class="field"><label data-i18n="p_fRef">How were you referred?</label>
+        <select data-f="referral">
+          <option value="" data-i18n="p_optSelect">Select…</option>
+          <option value="institutional_nomination" data-i18n="p_optNom">Institutional nomination</option>
+          <option value="commanding_officer" data-i18n="p_optCo">Commanding officer / manager</option>
+          <option value="colleague" data-i18n="p_optCol">Colleague</option>
+          <option value="other" data-i18n="p_optOther">Other</option>
+        </select></div>
+    </div>
+    <label class="check"><input type="checkbox" data-f="commitment" data-req><span data-i18n="p_cCommit">I confirm my availability for the full 16-week, full-time programme, including all four international stations.</span></label>
+  </section>
+
+  <!-- ── Skills ── -->
+  <section class="sec" id="sec-sk">
+    <div class="sec-head"><h2 data-i18n="p_secSk">Skills &amp; hobbies</h2><p data-i18n="p_skIntro">Comma-separated lists — each entry becomes a structured data point in your application.</p></div>
+    <div class="field"><label data-i18n-html="p_fSkills">Professional skills <span class="req">*</span></label>
+      <input data-f="skills" data-req data-i18n-ph="p_phSkills" placeholder="Strategic planning, programme governance, systems engineering">
+      <span class="hint" data-i18n="p_hSkills">Minimum 3, separated by commas.</span></div>
+    <div class="field"><label data-i18n="p_fHobbies">Hobbies &amp; interests</label>
+      <input data-f="hobbies" data-i18n-ph="p_phHobbies" placeholder="Aviation, endurance sport, reading"></div>
+  </section>
+
+  <div class="sec-nav">
+    <button class="btn btn-ghost" id="prevBtn" type="button"><span data-i18n="p_prev">Previous</span></button>
+    <button class="btn btn-ghost" id="nextBtn" type="button"><span data-i18n="p_next">Next section</span></button>
+  </div>
+
+  <label class="check" style="margin-top:30px"><input type="checkbox" id="declare" data-req><span data-i18n="p_cDeclare">I declare that all information provided is accurate and complete, and I understand that any misrepresentation leads to disqualification.</span></label>
+
+  <div class="actions">
+    <button class="btn btn-ghost" id="draftSave" type="button"><span data-i18n="p_draftSave">Save draft (file)</span></button>
+    <button class="btn btn-ghost" id="draftLoad" type="button"><span data-i18n="p_draftLoad">Load draft</span></button>
+    <input type="file" id="draftFile" accept="application/json" hidden>
+    <span class="spacer"></span>
+    <button class="btn btn-gold" id="generate" type="button"><span data-i18n="p_generate">Review &amp; generate application</span><span class="arr" aria-hidden="true">→</span></button>
+  </div>
+  <p class="err" id="errBox" data-i18n="p_err">Some required fields are missing or invalid — incomplete sections are marked above.</p>
+
+  <div class="review" id="review">
+    <h3 data-i18n="p_rvTitle">Application generated</h3>
+    <p class="rid" id="rid">SAMT-26-00000</p>
+    <p data-i18n="p_rvBody">Your structured application file has been prepared. Download it, keep a copy, and submit it through your nominating authority or the address provided in your invitation.</p>
+    <div class="r-actions">
+      <button class="btn btn-gold" id="dlJson" type="button"><span data-i18n="p_dlJson">Download JSON</span></button>
+      <button class="btn btn-ghost" id="cpJson" type="button"><span data-i18n="p_cpJson">Copy JSON</span></button>
+      <a class="btn btn-ghost" id="mailBtn" href="#"><span data-i18n="p_mail">Submit by email</span></a>
+    </div>
+    <p class="json-note" data-i18n="p_jsonNote">Machine-readable · schema samt.application.v1 · designed for AI-assisted review</p>
+  </div>
+
+  <p class="st-note" style="margin-top:46px" data-i18n="p_approvals">Proposed entities, visits and programmes are subject to coordination and formal approvals.</p>
+</main>
+
+<footer class="footer"><div class="wrap"><div class="disclaimer">
+  <span data-i18n="p_copy">© 2026 SAMT. All rights reserved.</span>
+  <span class="legal" data-i18n="p_legal">Concept website. Applications submitted here generate a local file only — no data is transmitted or stored by this page.</span>
+</div></div></footer>
+<script>
+(function(){
+'use strict';
+var doc = document, root = doc.documentElement;
+root.classList.add('js');
+
+/* ▸ Set the receiving address before launch (used by "Submit by email") */
+var SUBMIT_EMAIL = 'nominations@samt.example';
+
+/* ═══════════ page dictionary ═══════════ */
+var PD = {
+en: {
+  _title:'SAMT — Nomination Form', _dir:'ltr', _langBtn:'<span class="ar-glyph">\u0639</span>',
+  p_skip:'Skip to content', p_brand:'SAMT', p_brandSub:'Nomination form', p_back:'\u2190 Site',
+  p_eyebrow:'Cohort 01 — Nomination', p_title:'The application is the first assessment.',
+  p_intro:'Complete all sections with precision. Submissions are reviewed through a structured, machine-assisted process — clear, specific and evidenced answers carry more weight than long ones.',
+  p_completed:'profile completed',
+  p_secG:'General information', p_secId:'Identity', p_secXp:'Professional experience', p_secEd:'Education',
+  p_secTr:'Training courses', p_secAc:'Achievements', p_secPr:'Preferences', p_secSk:'Skills & hobbies',
+  p_gIntro:'Core contact and service details, exactly as they appear in official records.',
+  p_fNameEn:'Full name — English <span class="req">*</span>', p_fNameAr:'Full name — Arabic <span class="req">*</span>',
+  p_fDob:'Date of birth <span class="req">*</span>', p_fNat:'Nationality <span class="req">*</span>',
+  p_fCity:'Emirate / city of residence <span class="req">*</span>', p_fEmail:'Email <span class="req">*</span>',
+  p_fPhone:'Mobile number <span class="req">*</span>', p_fEmployer:'Current employer / unit <span class="req">*</span>',
+  p_fRole:'Current role / rank <span class="req">*</span>', p_fYears:'Total years of experience <span class="req">*</span>',
+  p_idIntro:'Identity details are used only for verification during shortlisting.',
+  p_fUae:'UAE national <span class="req">*</span>', p_optSelect:'Select\u2026', p_optYes:'Yes', p_optNo:'No',
+  p_fGender:'Gender', p_optMale:'Male', p_optFemale:'Female',
+  p_fEid:'Emirates ID (optional)', p_fLangs:'Languages spoken <span class="req">*</span>', p_phLangs:'Arabic, English',
+  p_xpIntro:'Provide your career history — minimum 1 and maximum 3 positions, most recent first.',
+  p_xpAdd:'Add position', p_bPos:'Position',
+  p_fXpRole:'Role title <span class="req">*</span>', p_fXpOrg:'Organisation <span class="req">*</span>',
+  p_fXpSector:'Sector', p_optSecDef:'Defence', p_optSecGov:'Government', p_optSecAvi:'Aviation & aerospace',
+  p_optSecTech:'Technology', p_optSecEnergy:'Energy', p_optSecAcad:'Academia', p_optSecPriv:'Private sector', p_optSecOther:'Other',
+  p_fXpFrom:'From <span class="req">*</span>', p_fXpTo:'To', p_xpPresent:'Current position',
+  p_fXpPeople:'People led (number)', p_fXpSummary:'Key responsibilities & results <span class="req">*</span>',
+  p_edIntro:'Formal qualifications — minimum 1 and maximum 3, highest first.',
+  p_edAdd:'Add qualification', p_bQual:'Qualification',
+  p_fEdLevel:'Degree level <span class="req">*</span>', p_optLvlDip:'Diploma', p_optLvlBach:'Bachelor',
+  p_optLvlMas:'Master', p_optLvlDoc:'Doctorate', p_optLvlOther:'Other',
+  p_fEdField:'Field of study <span class="req">*</span>', p_fEdInst:'Institution <span class="req">*</span>',
+  p_fEdCountry:'Country <span class="req">*</span>', p_fEdYear:'Year of graduation <span class="req">*</span>',
+  p_trIntro:'Relevant professional courses — up to 5. Leadership, strategy and technical programmes carry most weight.',
+  p_trAdd:'Add course', p_bCourse:'Course',
+  p_fTrName:'Course name', p_fTrProvider:'Provider', p_fTrYear:'Year', p_fTrCat:'Category',
+  p_optCatLead:'Leadership', p_optCatStrat:'Strategy', p_optCatTech:'Technical', p_optCatPm:'Programme management', p_optCatOther:'Other',
+  p_acIntro:'Up to 3 achievements with measurable institutional impact. State the result, not the effort.',
+  p_acAdd:'Add achievement', p_bAch:'Achievement',
+  p_fAcTitle:'Title', p_fAcImpact:'Impact statement', p_fAcEvidence:'Evidence type',
+  p_optEvAward:'Official award', p_optEvReport:'Institutional report', p_optEvMedia:'Published work / media', p_optEvRef:'Senior reference', p_optEvOther:'Other',
+  p_prIntro:'Your motivation and commitments. Free-text answers are deliberately limited — precision is part of the assessment.',
+  p_fMotivation:'Motivation statement <span class="req">*</span>',
+  p_hMotivation:'Why command, why now, and why you — in no more than 600 characters.',
+  p_fPhilosophy:'Leadership philosophy — one line',
+  p_fStation:'Station of highest interest', p_optUae:'UAE — national capability', p_optUk:'UK — leadership & discipline',
+  p_optFr:'France — strategy & partnerships', p_optUs:'USA — cooperation & acquisition',
+  p_fRef:'How were you referred?', p_optNom:'Institutional nomination', p_optCo:'Commanding officer / manager', p_optCol:'Colleague', p_optOther:'Other',
+  p_cCommit:'I confirm my availability for the full 16-week, full-time programme, including all four international stations.',
+  p_skIntro:'Comma-separated lists — each entry becomes a structured data point in your application.',
+  p_fSkills:'Professional skills <span class="req">*</span>', p_phSkills:'Strategic planning, programme governance, systems engineering',
+  p_hSkills:'Minimum 3, separated by commas.', p_fHobbies:'Hobbies & interests', p_phHobbies:'Aviation, endurance sport, reading',
+  p_prev:'Previous', p_next:'Next section', p_remove:'Remove',
+  p_cDeclare:'I declare that all information provided is accurate and complete, and I understand that any misrepresentation leads to disqualification.',
+  p_draftSave:'Save draft (file)', p_draftLoad:'Load draft', p_generate:'Review & generate application',
+  p_err:'Some required fields are missing or invalid — incomplete sections are marked above.',
+  p_rvTitle:'Application generated',
+  p_rvBody:'Your structured application file has been prepared. Download it, keep a copy, and submit it through your nominating authority or the address provided in your invitation.',
+  p_dlJson:'Download JSON', p_cpJson:'Copy JSON', p_cpDone:'Copied \u2713', p_mail:'Submit by email',
+  p_jsonNote:'Machine-readable \u00b7 schema samt.application.v1 \u00b7 designed for AI-assisted review',
+  p_approvals:'Proposed entities, visits and programmes are subject to coordination and formal approvals.',
+  p_copy:'\u00a9 2026 SAMT. All rights reserved.',
+  p_legal:'Concept website. Applications submitted here generate a local file only — no data is transmitted or stored by this page.'
+},
+ar: {
+  _title:'سَمْت — نموذج الترشيح', _dir:'rtl', _langBtn:'EN',
+  p_skip:'الانتقال إلى المحتوى', p_brand:'سَمْت', p_brandSub:'نموذج الترشيح', p_back:'\u2192 الموقع',
+  p_eyebrow:'الدفعة 01 — الترشيح', p_title:'الطلب هو أول تقييم.',
+  p_intro:'أكمل جميع الأقسام بدقة. تُراجع الطلبات عبر عملية منظمة مدعومة بالتحليل الآلي — الإجابات الواضحة والمحددة والمدعومة بالأدلة أثقل وزناً من الإجابات الطويلة.',
+  p_completed:'نسبة اكتمال الملف',
+  p_secG:'المعلومات العامة', p_secId:'الهوية', p_secXp:'الخبرة المهنية', p_secEd:'التعليم',
+  p_secTr:'الدورات التدريبية', p_secAc:'الإنجازات', p_secPr:'التفضيلات', p_secSk:'المهارات والهوايات',
+  p_gIntro:'بيانات التواصل والخدمة الأساسية كما وردت في السجلات الرسمية.',
+  p_fNameEn:'الاسم الكامل — بالإنجليزية <span class="req">*</span>', p_fNameAr:'الاسم الكامل — بالعربية <span class="req">*</span>',
+  p_fDob:'تاريخ الميلاد <span class="req">*</span>', p_fNat:'الجنسية <span class="req">*</span>',
+  p_fCity:'الإمارة / مدينة الإقامة <span class="req">*</span>', p_fEmail:'البريد الإلكتروني <span class="req">*</span>',
+  p_fPhone:'رقم الهاتف المتحرك <span class="req">*</span>', p_fEmployer:'جهة العمل / الوحدة الحالية <span class="req">*</span>',
+  p_fRole:'المسمى الوظيفي / الرتبة الحالية <span class="req">*</span>', p_fYears:'إجمالي سنوات الخبرة <span class="req">*</span>',
+  p_idIntro:'تُستخدم بيانات الهوية للتحقق فقط خلال مرحلة الفرز.',
+  p_fUae:'مواطن إماراتي <span class="req">*</span>', p_optSelect:'اختر\u2026', p_optYes:'نعم', p_optNo:'لا',
+  p_fGender:'الجنس', p_optMale:'ذكر', p_optFemale:'أنثى',
+  p_fEid:'رقم الهوية الإماراتية (اختياري)', p_fLangs:'اللغات المتحدث بها <span class="req">*</span>', p_phLangs:'العربية، الإنجليزية',
+  p_xpIntro:'قدّم سجلك المهني — بحد أدنى وظيفة واحدة وبحد أقصى ثلاث وظائف، الأحدث أولاً.',
+  p_xpAdd:'إضافة وظيفة', p_bPos:'الوظيفة',
+  p_fXpRole:'المسمى الوظيفي <span class="req">*</span>', p_fXpOrg:'الجهة <span class="req">*</span>',
+  p_fXpSector:'القطاع', p_optSecDef:'الدفاع', p_optSecGov:'الحكومة', p_optSecAvi:'الطيران والفضاء',
+  p_optSecTech:'التقنية', p_optSecEnergy:'الطاقة', p_optSecAcad:'الأكاديميا', p_optSecPriv:'القطاع الخاص', p_optSecOther:'أخرى',
+  p_fXpFrom:'من <span class="req">*</span>', p_fXpTo:'إلى', p_xpPresent:'الوظيفة الحالية',
+  p_fXpPeople:'عدد من قُدتهم', p_fXpSummary:'أبرز المسؤوليات والنتائج <span class="req">*</span>',
+  p_edIntro:'المؤهلات العلمية — بحد أدنى مؤهل واحد وبحد أقصى ثلاثة، الأعلى أولاً.',
+  p_edAdd:'إضافة مؤهل', p_bQual:'المؤهل',
+  p_fEdLevel:'المستوى العلمي <span class="req">*</span>', p_optLvlDip:'دبلوم', p_optLvlBach:'بكالوريوس',
+  p_optLvlMas:'ماجستير', p_optLvlDoc:'دكتوراه', p_optLvlOther:'أخرى',
+  p_fEdField:'التخصص <span class="req">*</span>', p_fEdInst:'المؤسسة التعليمية <span class="req">*</span>',
+  p_fEdCountry:'الدولة <span class="req">*</span>', p_fEdYear:'سنة التخرج <span class="req">*</span>',
+  p_trIntro:'الدورات المهنية ذات الصلة — حتى 5 دورات. لبرامج القيادة والاستراتيجية والبرامج الفنية الوزن الأكبر.',
+  p_trAdd:'إضافة دورة', p_bCourse:'الدورة',
+  p_fTrName:'اسم الدورة', p_fTrProvider:'الجهة المقدمة', p_fTrYear:'السنة', p_fTrCat:'الفئة',
+  p_optCatLead:'قيادة', p_optCatStrat:'استراتيجية', p_optCatTech:'فنية', p_optCatPm:'إدارة برامج', p_optCatOther:'أخرى',
+  p_acIntro:'حتى 3 إنجازات ذات أثر مؤسسي قابل للقياس. اذكر النتيجة لا الجهد.',
+  p_acAdd:'إضافة إنجاز', p_bAch:'الإنجاز',
+  p_fAcTitle:'العنوان', p_fAcImpact:'بيان الأثر', p_fAcEvidence:'نوع الدليل',
+  p_optEvAward:'جائزة رسمية', p_optEvReport:'تقرير مؤسسي', p_optEvMedia:'عمل منشور / إعلام', p_optEvRef:'تزكية من قيادة عليا', p_optEvOther:'أخرى',
+  p_prIntro:'دوافعك والتزاماتك. الإجابات الحرة محدودة الطول عمداً — فالدقة جزء من التقييم.',
+  p_fMotivation:'بيان الدافع <span class="req">*</span>',
+  p_hMotivation:'لماذا القيادة، ولماذا الآن، ولماذا أنت — في حدود 600 حرف.',
+  p_fPhilosophy:'فلسفتك القيادية — سطر واحد',
+  p_fStation:'المحطة الأكثر أهمية لك', p_optUae:'الإمارات — القدرات الوطنية', p_optUk:'بريطانيا — القيادة والانضباط',
+  p_optFr:'فرنسا — الاستراتيجية والشراكات', p_optUs:'أمريكا — التعاون والاستحواذ',
+  p_fRef:'كيف تم ترشيحك؟', p_optNom:'ترشيح مؤسسي', p_optCo:'قائد مباشر / مدير', p_optCol:'زميل', p_optOther:'أخرى',
+  p_cCommit:'أؤكد جاهزيتي للبرنامج كاملاً بدوام تام لمدة 16 أسبوعاً، شاملاً المحطات الدولية الأربع.',
+  p_skIntro:'قوائم مفصولة بفواصل — كل عنصر يتحول إلى نقطة بيانات منظمة في طلبك.',
+  p_fSkills:'المهارات المهنية <span class="req">*</span>', p_phSkills:'التخطيط الاستراتيجي، حوكمة البرامج، هندسة الأنظمة',
+  p_hSkills:'ثلاث مهارات على الأقل، مفصولة بفواصل.', p_fHobbies:'الهوايات والاهتمامات', p_phHobbies:'الطيران، رياضات التحمل، القراءة',
+  p_prev:'السابق', p_next:'القسم التالي', p_remove:'حذف',
+  p_cDeclare:'أقرّ بأن جميع المعلومات المقدمة دقيقة وكاملة، وأدرك أن أي معلومات غير صحيحة تؤدي إلى الاستبعاد.',
+  p_draftSave:'حفظ مسودة (ملف)', p_draftLoad:'استيراد مسودة', p_generate:'مراجعة وإنشاء الطلب',
+  p_err:'بعض الحقول المطلوبة ناقصة أو غير صحيحة — الأقسام غير المكتملة محددة أعلاه.',
+  p_rvTitle:'تم إنشاء الطلب',
+  p_rvBody:'تم إعداد ملف طلبك المنظم. حمّله واحتفظ بنسخة، ثم قدّمه عبر جهة الترشيح أو العنوان الوارد في دعوتك.',
+  p_dlJson:'تحميل JSON', p_cpJson:'نسخ JSON', p_cpDone:'تم النسخ \u2713', p_mail:'الإرسال بالبريد',
+  p_jsonNote:'ملف قابل للقراءة الآلية \u00b7 المخطط samt.application.v1 \u00b7 مصمم للمراجعة المدعومة بالذكاء الاصطناعي',
+  p_approvals:'تخضع الجهات والزيارات والبرامج المقترحة للتنسيق والموافقات الرسمية.',
+  p_copy:'\u00a9 2026 سمت. جميع الحقوق محفوظة.',
+  p_legal:'موقع تصوري. الطلبات هنا تُنشئ ملفاً محلياً فقط — لا تُنقل أي بيانات ولا تُخزن عبر هذه الصفحة.'
+}
+};
+
+/* ═══════════ engine ═══════════ */
+var lang = 'en';
+function qs(s,c){return (c||doc).querySelector(s)}
+function qsa(s,c){return Array.prototype.slice.call((c||doc).querySelectorAll(s))}
+function t(k){ return (PD[lang][k] !== undefined) ? PD[lang][k] : k; }
+
+function translateIn(rt){
+  qsa('[data-i18n]', rt).forEach(function(el){ var k=el.getAttribute('data-i18n'); if(PD[lang][k]!==undefined) el.textContent=PD[lang][k]; });
+  qsa('[data-i18n-html]', rt).forEach(function(el){ var k=el.getAttribute('data-i18n-html'); if(PD[lang][k]!==undefined) el.innerHTML=PD[lang][k]; });
+  qsa('[data-i18n-ph]', rt).forEach(function(el){ var k=el.getAttribute('data-i18n-ph'); if(PD[lang][k]!==undefined) el.setAttribute('placeholder', PD[lang][k]); });
+}
+function applyLang(next){
+  lang = next;
+  root.setAttribute('lang', lang);
+  root.setAttribute('dir', PD[lang]._dir);
+  doc.title = PD[lang]._title;
+  translateIn(doc);
+  qs('#langBtnTxt').innerHTML = PD[lang]._langBtn;
+  renumberAll();
+}
+qs('#langBtn').addEventListener('click', function(){ applyLang(lang==='en'?'ar':'en'); });
+
+/* ── section tabs ── */
+var ORDER = ['g','id','xp','ed','tr','ac','pr','sk'];
+var cur = 0;
+function showSec(i){
+  cur = Math.max(0, Math.min(ORDER.length-1, i));
+  ORDER.forEach(function(id, ix){
+    qs('#sec-'+id).classList.toggle('show', ix===cur);
+    qsa('.pill').filter(function(p){return p.getAttribute('data-sec')===id})[0]
+      .setAttribute('aria-selected', ix===cur ? 'true' : 'false');
+  });
+  qs('#prevBtn').style.visibility = cur===0 ? 'hidden' : 'visible';
+  qs('#nextBtn').style.visibility = cur===ORDER.length-1 ? 'hidden' : 'visible';
+  qs('.apply-head').scrollIntoView({behavior:'smooth', block:'start'});
+}
+qsa('.pill').forEach(function(p){ p.addEventListener('click', function(){ showSec(ORDER.indexOf(p.getAttribute('data-sec'))); }); });
+qs('#prevBtn').addEventListener('click', function(){ showSec(cur-1); });
+qs('#nextBtn').addEventListener('click', function(){ showSec(cur+1); });
+
+/* ── repeating blocks ── */
+function fld(cls, labelKey, inner){
+  return '<div class="field '+(cls||'')+'"><label data-i18n-html="'+labelKey+'">'+labelKey+'</label>'+inner+'</div>';
+}
+function opt(v, k){ return '<option value="'+v+'" data-i18n="'+k+'">'+k+'</option>'; }
+var BLOCKS = {
+  xp: { list:'#xpList', add:'#xpAdd', max:3, min:1, numKey:'p_bPos', breq:['role','organisation','from','summary'],
+    html: '<div class="grid2">'
+      + fld('', 'p_fXpRole', '<input data-f="role">')
+      + fld('', 'p_fXpOrg', '<input data-f="organisation">')
+      + '<div class="field"><label data-i18n="p_fXpSector">p_fXpSector</label><select data-f="sector">'
+      + opt('','p_optSelect')+opt('defence','p_optSecDef')+opt('government','p_optSecGov')+opt('aviation_aerospace','p_optSecAvi')
+      + opt('technology','p_optSecTech')+opt('energy','p_optSecEnergy')+opt('academia','p_optSecAcad')+opt('private','p_optSecPriv')+opt('other','p_optSecOther')
+      + '</select></div>'
+      + '<div class="field"><label data-i18n="p_fXpPeople">p_fXpPeople</label><input type="number" min="0" step="1" data-f="people_led" dir="ltr"></div>'
+      + fld('', 'p_fXpFrom', '<input type="month" data-f="from" dir="ltr">')
+      + '<div class="field"><label data-i18n="p_fXpTo">p_fXpTo</label><input type="month" data-f="to" dir="ltr">'
+      + '<label class="check" style="margin:6px 0 0"><input type="checkbox" data-f="is_current"><span data-i18n="p_xpPresent">p_xpPresent</span></label></div>'
+      + '</div>'
+      + '<div class="field"><label data-i18n-html="p_fXpSummary">p_fXpSummary</label><textarea data-f="summary" maxlength="300"></textarea></div>'
+  },
+  ed: { list:'#edList', add:'#edAdd', max:3, min:1, numKey:'p_bQual', breq:['level','field','institution','country','year'],
+    html: '<div class="grid2">'
+      + '<div class="field"><label data-i18n-html="p_fEdLevel">p_fEdLevel</label><select data-f="level">'
+      + opt('','p_optSelect')+opt('diploma','p_optLvlDip')+opt('bachelor','p_optLvlBach')+opt('master','p_optLvlMas')+opt('doctorate','p_optLvlDoc')+opt('other','p_optLvlOther')
+      + '</select></div>'
+      + fld('', 'p_fEdField', '<input data-f="field">')
+      + fld('', 'p_fEdInst', '<input data-f="institution">')
+      + fld('', 'p_fEdCountry', '<input data-f="country">')
+      + fld('', 'p_fEdYear', '<input type="number" min="1975" max="2026" data-f="year" dir="ltr">')
+      + '</div>'
+  },
+  tr: { list:'#trList', add:'#trAdd', max:5, min:0, numKey:'p_bCourse', breq:['name','provider','year'],
+    html: '<div class="grid2">'
+      + '<div class="field"><label data-i18n="p_fTrName">p_fTrName</label><input data-f="name"></div>'
+      + '<div class="field"><label data-i18n="p_fTrProvider">p_fTrProvider</label><input data-f="provider"></div>'
+      + '<div class="field"><label data-i18n="p_fTrYear">p_fTrYear</label><input type="number" min="1990" max="2026" data-f="year" dir="ltr"></div>'
+      + '<div class="field"><label data-i18n="p_fTrCat">p_fTrCat</label><select data-f="category">'
+      + opt('','p_optSelect')+opt('leadership','p_optCatLead')+opt('strategy','p_optCatStrat')+opt('technical','p_optCatTech')+opt('programme_management','p_optCatPm')+opt('other','p_optCatOther')
+      + '</select></div></div>'
+  },
+  ac: { list:'#acList', add:'#acAdd', max:3, min:0, numKey:'p_bAch', breq:['title','impact'],
+    html: '<div class="field"><label data-i18n="p_fAcTitle">p_fAcTitle</label><input data-f="title"></div>'
+      + '<div class="field"><label data-i18n="p_fAcImpact">p_fAcImpact</label><textarea data-f="impact" maxlength="280"></textarea></div>'
+      + '<div class="field"><label data-i18n="p_fAcEvidence">p_fAcEvidence</label><select data-f="evidence">'
+      + opt('','p_optSelect')+opt('award','p_optEvAward')+opt('report','p_optEvReport')+opt('media','p_optEvMedia')+opt('reference','p_optEvRef')+opt('other','p_optEvOther')
+      + '</select></div>'
+  }
+};
+function addBlock(type){
+  var B = BLOCKS[type], list = qs(B.list);
+  if(list.children.length >= B.max) return null;
+  var b = doc.createElement('div');
+  b.className = 'block';
+  b.setAttribute('data-type', type);
+  b.innerHTML = '<div class="block-top"><span class="block-num"></span>'
+    + '<button type="button" class="block-remove" data-i18n="p_remove">Remove</button></div>' + B.html;
+  list.appendChild(b);
+  translateIn(b);
+  qs('.block-remove', b).addEventListener('click', function(){
+    if(list.children.length <= B.min) return;
+    list.removeChild(b);
+    renumber(type); refresh();
+  });
+  renumber(type); refresh();
+  return b;
+}
+function renumber(type){
+  var B = BLOCKS[type], list = qs(B.list);
+  qsa('.block', list).forEach(function(b, i){
+    qs('.block-num', b).textContent = t(B.numKey) + ' 0' + (i+1);
+    var rm = qs('.block-remove', b);
+    rm.style.display = (list.children.length <= B.min) ? 'none' : '';
+  });
+  var addBtn = qs(B.add);
+  if(addBtn){ if(list.children.length >= B.max) addBtn.setAttribute('disabled',''); else addBtn.removeAttribute('disabled'); }
+}
+function renumberAll(){ Object.keys(BLOCKS).forEach(renumber); }
+Object.keys(BLOCKS).forEach(function(tp){
+  qs(BLOCKS[tp].add).addEventListener('click', function(){ addBlock(tp); });
+});
+
+/* ── value helpers ── */
+function val(el){
+  if(!el) return '';
+  if(el.type === 'checkbox') return el.checked;
+  return (el.value || '').trim();
+}
+function blockData(type){
+  return qsa('.block', qs(BLOCKS[type].list)).map(function(b){
+    var o = {};
+    qsa('[data-f]', b).forEach(function(el){ o[el.getAttribute('data-f')] = val(el); });
+    return o;
+  });
+}
+function blockFilled(o){
+  return Object.keys(o).some(function(k){ var v=o[k]; return v===true || (typeof v==='string' && v!==''); });
+}
+
+/* ── validation + progress ── */
+function fieldOk(el){
+  var v = val(el);
+  if(el.type === 'checkbox') return v === true;
+  if(v === '') return false;
+  if(el.type === 'email') return /.+@.+\..+/.test(v);
+  if(el.getAttribute('data-f') === 'skills') return v.split(',').filter(function(s){return s.trim()!=='';}).length >= 3;
+  return true;
+}
+function secOf(el){ var s = el.closest('.sec'); return s ? s.id.replace('sec-','') : null; }
+function audit(mark){
+  var okAll = true, secOkMap = {};
+  ORDER.forEach(function(id){ secOkMap[id] = true; });
+  var total = 0, done = 0;
+  qsa('[data-req]').forEach(function(el){
+    total++;
+    var ok = fieldOk(el);
+    if(ok) done++;
+    else { okAll = false; var s = secOf(el); if(s) secOkMap[s] = false; }
+    if(mark && el.getAttribute('data-req') !== null) el.classList.toggle('invalid', !ok && mark);
+  });
+  ['xp','ed','tr','ac'].forEach(function(tp){
+    var B = BLOCKS[tp];
+    qsa('.block', qs(B.list)).forEach(function(b, i){
+      var o = {}; qsa('[data-f]', b).forEach(function(el){ o[el.getAttribute('data-f')] = val(el); });
+      var mustFill = (i < B.min) || blockFilled(o);
+      if(!mustFill) return;
+      B.breq.forEach(function(f){
+        total++;
+        var el = qs('[data-f="'+f+'"]', b);
+        var ok = fieldOk(el) || (f==='from' && val(qs('[data-f="is_current"]', b))===true && val(el)!=='');
+        if(el && el.getAttribute('data-f')==='year') ok = val(el) !== '';
+        if(ok) done++;
+        else { okAll = false; secOkMap[tp] = false; }
+        if(mark && el) el.classList.toggle('invalid', !ok);
+      });
+    });
+  });
+  var pct = total ? Math.round(done/total*100) : 0;
+  qs('#pct').textContent = pct;
+  qs('#fill').style.width = pct + '%';
+  qsa('.pill').forEach(function(p){
+    var id = p.getAttribute('data-sec');
+    p.classList.toggle('done', secOkMap[id] && pct > 0);
+  });
+  return okAll;
+}
+function refresh(){ audit(false); }
+doc.addEventListener('input', function(e){
+  refresh();
+  var f = e.target.getAttribute && e.target.getAttribute('data-f');
+  if(f && e.target.hasAttribute('data-countmax')){
+    var c = qs('.count[data-countfor="'+f+'"]');
+    if(c) c.textContent = (e.target.value||'').length + ' / ' + e.target.getAttribute('data-countmax');
+  }
+});
+doc.addEventListener('change', refresh);
+
+/* ── serialize ── */
+function splitList(s){ return (s||'').split(/[,\u060C]/).map(function(x){return x.trim();}).filter(Boolean); }
+function collect(){
+  var g = {};
+  qsa('.apply-main [data-f]').forEach(function(el){
+    if(el.closest('.block')) return;
+    g[el.getAttribute('data-f')] = val(el);
+  });
+  return {
+    schema: 'samt.application.v1',
+    generated_at: new Date().toISOString(),
+    application_id: qs('#rid').textContent,
+    submission_language: lang,
+    candidate: {
+      full_name_en: g.full_name_en, full_name_ar: g.full_name_ar,
+      date_of_birth: g.date_of_birth, nationality: g.nationality, city: g.city,
+      email: g.email, phone: g.phone, employer: g.employer, current_role: g.current_role,
+      years_experience: parseFloat(g.years_experience) || 0,
+      uae_national: g.uae_national, gender: g.gender || null,
+      emirates_id: g.emirates_id || null, languages: splitList(g.languages)
+    },
+    experience: blockData('xp').map(function(o){
+      o.people_led = o.people_led === '' ? null : parseInt(o.people_led, 10);
+      if(o.is_current === true) o.to = 'present';
+      return o;
+    }),
+    education: blockData('ed').map(function(o){ o.year = o.year === '' ? null : parseInt(o.year, 10); return o; }),
+    training: blockData('tr').filter(blockFilled).map(function(o){ o.year = o.year === '' ? null : parseInt(o.year, 10); return o; }),
+    achievements: blockData('ac').filter(blockFilled),
+    preferences: {
+      motivation: g.motivation, leadership_philosophy: g.philosophy || null,
+      station_interest: g.station_interest || null, referral: g.referral || null,
+      full_time_commitment: g.commitment === true
+    },
+    skills: { professional: splitList(g.skills), hobbies: splitList(g.hobbies) },
+    declaration_accepted: qs('#declare').checked
+  };
+}
+function withDerived(o){
+  o.derived = {
+    positions_count: o.experience.length,
+    education_count: o.education.length,
+    training_count: o.training.length,
+    achievements_count: o.achievements.length,
+    skills_count: o.skills.professional.length,
+    motivation_chars: (o.preferences.motivation || '').length
+  };
+  return o;
+}
+
+/* ── draft save / load (file-based, no browser storage) ── */
+function download(name, text){
+  var b = new Blob([text], {type:'application/json'});
+  var a = doc.createElement('a');
+  a.href = URL.createObjectURL(b);
+  a.download = name;
+  doc.body.appendChild(a); a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 400);
+}
+qs('#draftSave').addEventListener('click', function(){
+  var d = collect(); d.draft = true;
+  download('SAMT-draft.json', JSON.stringify(d, null, 2));
+});
+qs('#draftLoad').addEventListener('click', function(){ qs('#draftFile').click(); });
+qs('#draftFile').addEventListener('change', function(){
+  var f = this.files[0]; if(!f) return;
+  var r = new FileReader();
+  r.onload = function(){
+    try{
+      var d = JSON.parse(r.result);
+      loadDraft(d);
+    }catch(e){ alert('Invalid draft file'); }
+  };
+  r.readAsText(f);
+  this.value = '';
+});
+function setF(scope, f, v){
+  var el = qs('[data-f="'+f+'"]', scope);
+  if(!el) return;
+  if(el.type === 'checkbox') el.checked = v === true;
+  else el.value = (v === null || v === undefined) ? '' : v;
+}
+function loadDraft(d){
+  var c = d.candidate || {};
+  Object.keys(c).forEach(function(k){
+    setF(doc, k, k==='languages' ? (c[k]||[]).join(', ') : c[k]);
+  });
+  var p = d.preferences || {};
+  setF(doc, 'motivation', p.motivation); setF(doc, 'philosophy', p.leadership_philosophy);
+  setF(doc, 'station_interest', p.station_interest); setF(doc, 'referral', p.referral);
+  setF(doc, 'commitment', p.full_time_commitment);
+  var s = d.skills || {};
+  setF(doc, 'skills', (s.professional||[]).join(', '));
+  setF(doc, 'hobbies', (s.hobbies||[]).join(', '));
+  [['xp', d.experience], ['ed', d.education], ['tr', d.training], ['ac', d.achievements]].forEach(function(pair){
+    var tp = pair[0], arr = pair[1] || [];
+    var list = qs(BLOCKS[tp].list);
+    list.innerHTML = '';
+    var n = Math.max(BLOCKS[tp].min, Math.min(arr.length, BLOCKS[tp].max));
+    for(var i = 0; i < Math.max(n, BLOCKS[tp].min); i++){
+      var b = addBlock(tp);
+      var o = arr[i];
+      if(b && o) Object.keys(o).forEach(function(k){
+        if(k === 'to' && o[k] === 'present'){ setF(b, 'is_current', true); return; }
+        setF(b, k, o[k]);
+      });
+    }
+  });
+  refresh();
+}
+
+/* ── generate ── */
+var finalJson = null;
+function newId(){
+  return 'SAMT-26-' + Date.now().toString(36).toUpperCase().slice(-6);
+}
+qs('#generate').addEventListener('click', function(){
+  var ok = audit(true) && qs('#declare').checked;
+  qs('#errBox').classList.toggle('show', !ok);
+  if(!ok){ qs('#declare').closest('.check').style.outline = qs('#declare').checked ? '' : '1px solid #8f4030'; return; }
+  qs('#declare').closest('.check').style.outline = '';
+  qs('#rid').textContent = newId();
+  finalJson = JSON.stringify(withDerived(collect()), null, 2);
+  var rv = qs('#review');
+  rv.classList.add('show');
+  qs('#mailBtn').setAttribute('href',
+    'mailto:' + SUBMIT_EMAIL
+    + '?subject=' + encodeURIComponent('SAMT Application ' + qs('#rid').textContent)
+    + '&body=' + encodeURIComponent('Please find my SAMT application attached (JSON file downloaded from the nomination form).'));
+  rv.scrollIntoView({behavior:'smooth', block:'center'});
+});
+qs('#dlJson').addEventListener('click', function(){
+  if(finalJson) download(qs('#rid').textContent + '.json', finalJson);
+});
+qs('#cpJson').addEventListener('click', function(){
+  if(!finalJson) return;
+  var btnSpan = qs('#cpJson span');
+  function done(){ btnSpan.textContent = t('p_cpDone'); setTimeout(function(){ btnSpan.textContent = t('p_cpJson'); }, 1800); }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(finalJson).then(done, done);
+  } else {
+    var ta = doc.createElement('textarea');
+    ta.value = finalJson; doc.body.appendChild(ta); ta.select();
+    try{ doc.execCommand('copy'); }catch(e){}
+    ta.remove(); done();
+  }
+});
+
+/* ── init ── */
+addBlock('xp');
+addBlock('ed');
+refresh();
+})();
+</script>
+</body>
+</html>
