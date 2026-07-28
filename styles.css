@@ -516,3 +516,10 @@ html[dir="rtl"] #hero::after{background-position:center left}
 .kin::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:url('art-network.jpg') center 62%/cover no-repeat;opacity:.72}
 #competencies::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:url('art-formation.jpg') right center/cover no-repeat;opacity:.45}
 @media (max-width:640px){#competencies::after{display:none}.kin::after{opacity:.5}}
+
+
+/* ═══ stations content refresh ═══ */
+.st-elabel{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:-6px}
+html[lang="ar"] .st-elabel{font-family:var(--font-body);letter-spacing:0;font-size:12.5px}
+.st-note{margin-top:36px;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;color:var(--slate-dim);text-transform:uppercase}
+html[lang="ar"] .st-note{font-family:var(--font-body);letter-spacing:0;font-size:12.5px;text-transform:none}
