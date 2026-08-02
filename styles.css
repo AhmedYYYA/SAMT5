@@ -260,6 +260,90 @@ html[lang="ar"] .stat-l{font-family:var(--font-body);letter-spacing:0;font-size:
 html[lang="ar"] .defn .defn-term{font-family:var(--font-body);letter-spacing:0;font-size:12.5px}
 .defn p{color:var(--bone-dim)}
 
+/* ---------- strategic foundation ---------- */
+.foundation{
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 14% 18%,rgba(195,162,74,.08),transparent 30%),
+    linear-gradient(180deg,transparent,rgba(10,22,38,.52) 48%,transparent);
+}
+.foundation-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;
+  border:1px solid var(--line);background:var(--line);
+}
+.foundation-card{
+  position:relative;min-height:100%;padding:clamp(30px,4vw,46px);
+  display:flex;flex-direction:column;gap:22px;
+  background:linear-gradient(145deg,rgba(255,255,255,.025),transparent 42%),var(--night);
+  transition:background .45s var(--ease),transform .45s var(--ease);
+}
+.foundation-card::after{
+  content:"";position:absolute;inset-inline:0;top:0;height:2px;
+  background:linear-gradient(to right,var(--gold),transparent 68%);
+  opacity:.58;transform:scaleX(.34);transform-origin:0 50%;
+  transition:transform .65s var(--ease),opacity .45s var(--ease);
+}
+html[dir="rtl"] .foundation-card::after{
+  background:linear-gradient(to left,var(--gold),transparent 68%);transform-origin:100% 50%;
+}
+.foundation-card:hover{background:var(--ink);transform:translateY(-3px)}
+.foundation-card:hover::after{opacity:1;transform:scaleX(1)}
+.foundation-card__head{display:flex;align-items:center;gap:17px}
+.foundation-card__index{
+  width:43px;height:43px;display:grid;place-items:center;flex:none;
+  border:1px solid var(--gold-deep);color:var(--gold);
+  transform:rotate(45deg);
+}
+.foundation-card__index b{
+  display:block;font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.12em;
+  transform:rotate(-45deg);
+}
+.foundation-card__head h3{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(23px,2.4vw,31px);color:var(--bone);
+}
+.foundation-card > p{color:var(--bone-dim);font-size:clamp(15px,1.2vw,17px);line-height:1.9}
+.foundation-card .foundation-card__response{
+  margin-top:auto;padding-top:20px;border-top:1px solid var(--line-soft);color:var(--champagne);
+}
+.foundation-pathway{margin-top:clamp(40px,6vw,70px);padding-top:28px;border-top:1px solid var(--line)}
+.foundation-pathway__label{
+  margin-bottom:28px;color:var(--gold);font-family:var(--font-mono);
+  font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+}
+html[lang="ar"] .foundation-pathway__label{
+  font-family:var(--font-body);font-size:13px;letter-spacing:0;text-transform:none;
+}
+.foundation-path{
+  position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  list-style:none;margin:0;padding:0;
+}
+.foundation-path::before{
+  content:"";position:absolute;top:22px;inset-inline:10%;height:1px;
+  background:linear-gradient(to right,transparent,var(--gold-deep) 12%,var(--gold-deep) 88%,transparent);
+}
+html[dir="rtl"] .foundation-path::before{
+  background:linear-gradient(to left,transparent,var(--gold-deep) 12%,var(--gold-deep) 88%,transparent);
+}
+.foundation-path li{
+  position:relative;z-index:1;display:grid;justify-items:center;gap:18px;
+  padding-inline:12px;text-align:center;
+}
+.foundation-path li > span{
+  width:44px;height:44px;display:grid;place-items:center;
+  border:1px solid var(--gold-deep);background:var(--night);transform:rotate(45deg);
+  box-shadow:0 0 0 7px var(--night);
+}
+.foundation-path li > span b{
+  display:block;color:var(--gold);font-family:var(--font-mono);font-size:9px;font-weight:500;
+  letter-spacing:.08em;transform:rotate(-45deg);
+}
+.foundation-path strong{
+  max-width:16ch;color:var(--bone-dim);font-family:var(--font-display);
+  font-size:clamp(15px,1.25vw,18px);font-weight:400;line-height:1.5;
+}
+html[lang="ar"] .foundation-path strong{font-family:var(--font-body);font-size:16px}
+
 /* ---------- chapter 02 : journey (bearings) ---------- */
 .journey-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .jr{
@@ -378,7 +462,7 @@ html[lang="ar"] .foot-links a{font-family:var(--font-body);letter-spacing:0;font
   .hero-grid{grid-template-columns:1fr;gap:44px}
   .hero-ring-wrap{order:-1;margin-top:8px}
   .hero-ring{width:min(300px,64vw)}
-  .name-grid,.assess-grid,.st-panel.show{grid-template-columns:1fr}
+  .name-grid,.assess-grid,.st-panel.show,.foundation-grid{grid-template-columns:1fr}
   .name-callig,.assess-side{position:static}
   .comp-grid{grid-template-columns:repeat(2,1fr)}
   .jr{grid-template-columns:110px 1fr;row-gap:8px}
@@ -392,6 +476,18 @@ html[lang="ar"] .foot-links a{font-family:var(--font-body);letter-spacing:0;font
   .comp-grid,.gates{grid-template-columns:1fr}
   .jr{grid-template-columns:1fr}
   .jr-desc{grid-column:1}
+  .foundation-card{padding:28px 22px}
+  .foundation-path{grid-template-columns:1fr;gap:0}
+  .foundation-path::before{
+    top:22px;bottom:22px;inset-inline-start:21px;inset-inline-end:auto;
+    width:1px;height:auto;background:linear-gradient(transparent,var(--gold-deep) 8%,var(--gold-deep) 92%,transparent);
+  }
+  .foundation-path li{
+    grid-template-columns:44px 1fr;justify-items:start;align-items:center;
+    gap:20px;padding:0 0 28px;text-align:start;
+  }
+  .foundation-path li:last-child{padding-bottom:0}
+  .foundation-path strong{max-width:none}
   .instrument{inset-inline-end:14px;bottom:14px;padding:8px 11px}
   .st-tab{min-width:0;flex:1 1 45%;border-bottom:1px solid var(--line)}
   .hero{padding-top:96px}
