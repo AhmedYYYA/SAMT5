@@ -14,7 +14,7 @@ var I18N = window.SAMT_I18N;
 
 /* ═══════════ instrument section labels ═══════════ */
 var INST = window.SAMT_INST;
-var SECTION_IDS = ['hero','name','programme','journey','selection','stations','competencies','assessment','impact','admission'];
+var SECTION_IDS = ['hero','name','programme','foundation','journey','selection','stations','competencies','assessment','impact','admission'];
 var lang = 'en'; /* in-memory only — no storage APIs */
 var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
